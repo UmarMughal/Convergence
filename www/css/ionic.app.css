@@ -7664,13 +7664,39 @@ a.button {
   right: 0; }
 
 .bar-transparent {
-  background-color: transparent; }
+  background-color: transparent;
+  border: 0; }
 
 .bar-transparent .button {
   color: #fff; }
 
 .main-content {
-  background: url('http://static.pexels.com/wp-content/uploads/2014/05/abstract-blurred-lines-colorful-370.jpeg') no-repeat center center fixed;
+  background: url('/img/bg.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   background-size: cover;
   color: #fff; }
+
+/*
+.triangle {
+	position: absolute;
+	width: 3000px;
+	height: 3000px;
+	transition: all 0.3s linear;
+}
+.triangle-top-left {
+	top: -1500px;
+	left: -3000px;	
+	transform: rotate(18deg);
+	transform-origin: center right;
+	background-color: rgba(91, 232, 161, 0.8);
+}
+.triangle-top-left-grow {
+	top:  -1200px;
+	left: -2900px;
+}
+
+  var degrees = Math.atan( x/y ) * (180/Math.PI);
+  var degrees = Math.atan( 100 / 300 ) * (180/Math.PI); // 18 degrees
+
+  triangle grow calc 100 and 300 pixels x and y
+*/

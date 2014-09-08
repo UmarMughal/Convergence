@@ -47,6 +47,7 @@
 
 .bar-transparent {
 	background-color: transparent;
+	border: 0;
 }
 
 .bar-transparent .button {
@@ -57,7 +58,7 @@
 // -------------------------------
 
 .main-content {
-	background: url('http://static.pexels.com/wp-content/uploads/2014/05/abstract-blurred-lines-colorful-370.jpeg') no-repeat center center fixed;
+	background: url('/img/bg.jpeg') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	background-size: cover;	
 	color: $light;
