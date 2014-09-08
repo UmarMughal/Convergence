@@ -15,7 +15,7 @@ $dark:                            #444 !default;
 // Base
 // -------------------------------
 
-$font-family-sans-serif:          "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-sans-serif:          "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
 $font-family-light-sans-serif:    "Helvetica Neue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
 $font-family-serif:               Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:           Monaco, Menlo, Consolas, "Courier New", monospace !default;
@@ -30,7 +30,7 @@ $line-height-computed:            floor($font-size-base * $line-height-base) !de
 $line-height-large:               1.33 !default;
 $line-height-small:               1.5 !default;
 
-$headings-font-family:            $font-family-base !default;
+$headings-font-family:            "Montserrat" !default;
 $headings-font-weight:            500 !default;
 $headings-line-height:            1.2 !default;
 
@@ -676,7 +676,7 @@ $badge-default-text:              #AAAAAA !default;
 $z-index-action-sheet:            11 !default;
 $z-index-badge:                   1 !default;
 $z-index-backdrop:                11 !default;
-$z-index-bar:                     10 !default;
+$z-index-bar:                     12 !default;
 $z-index-bar-title:               0 !default;
 $z-index-bar-button:              1 !default;
 $z-index-item:                    2 !default;
@@ -715,3 +715,5 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+@import "scss/variables";
+@import "scss/style";

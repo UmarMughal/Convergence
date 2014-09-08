@@ -2194,7 +2194,7 @@ body, .ionic-body {
   color: #000;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
@@ -2494,7 +2494,7 @@ cite {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #000;
   font-weight: 500;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Montserrat";
   line-height: 1.2; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small {
     font-weight: normal;
@@ -2698,7 +2698,7 @@ a.subdued {
   position: absolute;
   right: 0;
   left: 0;
-  z-index: 10;
+  z-index: 12;
   box-sizing: border-box;
   padding: 5px;
   width: 100%;
@@ -4876,7 +4876,7 @@ label, input, button, select, textarea {
   line-height: 1.42857; }
 
 input, button, select, textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
 .item-input {
   display: -webkit-box;
@@ -7530,9 +7530,9 @@ a.button {
  * Apply roboto font
  */
 .roboto {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  font-family: "Roboto", "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
   .roboto input {
-    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+    font-family: "Roboto", "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
 /*
 .platform-android {
@@ -7636,3 +7636,41 @@ a.button {
 .platform-c:not(.enable-transitions) * {
   -webkit-transition: none !important;
   transition: none !important; }
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/montserrat.eot");
+  src: url("fonts/montserrat.eot#iefix") format("embedded-opentype"), url("fonts/montserrat.ttf") format("truetype"), url("fonts/montserrat.woff2") format("woff2"), url("fonts/montserrat.svg#Montserrat") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url("fonts/roboslab.eot");
+  src: url("fonts/roboslab.eot#iefix") format("embedded-opentype"), url("fonts/roboslab.ttf") format("truetype"), url("fonts/roboslab.woff2") format("woff2"), url("fonts/roboslab.svg#Roboslab") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+.title {
+  font-family: "Montserrat"; }
+
+.menu {
+  background-color: #444; }
+
+.menu .item {
+  background-color: #1e1e1e;
+  border-color: transparent;
+  left: 0;
+  right: 0; }
+
+.bar-transparent {
+  background-color: transparent; }
+
+.bar-transparent .button {
+  color: #fff; }
+
+.main-content {
+  background: url('http://static.pexels.com/wp-content/uploads/2014/05/abstract-blurred-lines-colorful-370.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+  color: #fff; }

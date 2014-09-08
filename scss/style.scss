@@ -1,0 +1,90 @@
+﻿// Fonts
+// -------------------------------
+
+@font-face {
+	font-family: $headings-font-family;
+	src:url("#{$custom-font-path}/montserrat.eot");
+	src:url("#{$custom-font-path}/montserrat.eot#iefix") format("embedded-opentype"),
+	url("#{$custom-font-path}/montserrat.ttf") format("truetype"),
+	url("#{$custom-font-path}/montserrat.woff2") format("woff2"),
+	url("#{$custom-font-path}/montserrat.svg#Montserrat") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: $body-font-family;
+	src:url("#{$custom-font-path}/roboslab.eot");
+	src:url("#{$custom-font-path}/roboslab.eot#iefix") format("embedded-opentype"),
+	url("#{$custom-font-path}/roboslab.ttf") format("truetype"),
+	url("#{$custom-font-path}/roboslab.woff2") format("woff2"),
+	url("#{$custom-font-path}/roboslab.svg#Roboslab") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+// Menu
+// -------------------------------
+
+.title {
+	font-family: $headings-font-family;
+}
+
+.menu {
+	background-color: $dark;
+}
+
+.menu .item {
+	background-color: darken($dark, 15%);
+	border-color: transparent;
+	left: 0;
+	right: 0;
+}
+
+// Overlapping heading
+// -------------------------------
+
+.bar-transparent {
+	background-color: transparent;
+}
+
+.bar-transparent .button {
+	color: $light;
+}
+
+// Content
+// -------------------------------
+
+.main-content {
+	background: url('http://static.pexels.com/wp-content/uploads/2014/05/abstract-blurred-lines-colorful-370.jpeg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	background-size: cover;	
+	color: $light;
+}
+
+
+/*
+.triangle {
+	position: absolute;
+	width: 3000px;
+	height: 3000px;
+	transition: all 0.3s linear;
+}
+.triangle-top-left {
+	top: -1500px;
+	left: -3000px;	
+	transform: rotate(18deg);
+	transform-origin: center right;
+	background-color: rgba(91, 232, 161, 0.8);
+}
+.triangle-top-left-grow {
+	top:  -1200px;
+	left: -2900px;
+}
+
+  var degrees = Math.atan( x/y ) * (180/Math.PI);
+  var degrees = Math.atan( 100 / 300 ) * (180/Math.PI); // 18 degrees
+
+  triangle grow calc 100 and 300 pixels x and y
+*/
