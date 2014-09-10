@@ -3,8 +3,8 @@
 
 @font-face {
 	font-family: $headings-font-family;
-	src:url("#{$custom-font-path}/montserrat.eot");
-	src:url("#{$custom-font-path}/montserrat.eot#iefix") format("embedded-opentype"),
+  src: url("#{$custom-font-path}/montserrat.eot");
+  src: url("#{$custom-font-path}/montserrat.eot#iefix") format("embedded-opentype"),
 	url("#{$custom-font-path}/montserrat.ttf") format("truetype"),
 	url("#{$custom-font-path}/montserrat.woff2") format("woff2"),
 	url("#{$custom-font-path}/montserrat.svg#Montserrat") format("svg");
@@ -14,15 +14,14 @@
 
 @font-face {
 	font-family: $body-font-family;
-	src:url("#{$custom-font-path}/roboslab.eot");
-	src:url("#{$custom-font-path}/roboslab.eot#iefix") format("embedded-opentype"),
+  src: url("#{$custom-font-path}/roboslab.eot");
+  src: url("#{$custom-font-path}/roboslab.eot#iefix") format("embedded-opentype"),
 	url("#{$custom-font-path}/roboslab.ttf") format("truetype"),
 	url("#{$custom-font-path}/roboslab.woff2") format("woff2"),
 	url("#{$custom-font-path}/roboslab.svg#Roboslab") format("svg");
 	font-weight: normal;
 	font-style: normal;
 }
-
 
 // Menu
 // -------------------------------
@@ -50,42 +49,72 @@
 	border: 0;
 }
 
-.bar-transparent .button {
-	color: $light;
+.bar-transparent {
+  .title,
+  .button {
+    color: $light;
+  }
 }
 
 // Content
 // -------------------------------
 
 .main-content {
-	background: url('/img/bg.jpeg') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	background-size: cover;	
+  //background: url('/img/bg.jpeg') no-repeat center center fixed;
+  //background-size: cover;
+  background-color: #C6C6C6;
 	color: $light;
 }
 
+// Help slides
+// -------------------------------
 
-/*
+.slider {
+  height: 100%;
+}
+
+// Board
+// -------------------------------
+
+.board {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  box-shadow: 0 0 40px -10px $dark;
+  overflow: hidden;
+}
+
+// Triangles
+// -------------------------------
+
 .triangle {
 	position: absolute;
-	width: 3000px;
-	height: 3000px;
-	transition: all 0.3s linear;
-}
-.triangle-top-left {
-	top: -1500px;
-	left: -3000px;	
-	transform: rotate(18deg);
-	transform-origin: center right;
-	background-color: rgba(91, 232, 161, 0.8);
-}
-.triangle-top-left-grow {
-	top:  -1200px;
-	left: -2900px;
+  width: 1000px;
+  height: 1000px;
+  opacity: 0.5;
+  transform-origin: top left;
 }
 
-  var degrees = Math.atan( x/y ) * (180/Math.PI);
-  var degrees = Math.atan( 100 / 300 ) * (180/Math.PI); // 18 degrees
+.circle {
+  position: absolute;
+  width: 1000px;
+  height: 1000px;
+  opacity: 0.8;
+  border-radius: 100%;
+  transform-origin: top left;
+}
 
-  triangle grow calc 100 and 300 pixels x and y
-*/
+// Focal Point
+// -------------------------------
+
+.focal-point {
+  display: none;
+  position: absolute;
+  transform: translate(-5px, -5px);
+  width: 10px;
+  height: 10px;
+  background-color: $light;
+  border-radius: 100%;
+}

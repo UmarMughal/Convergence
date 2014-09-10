@@ -5,7 +5,7 @@
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 	<title></title>
 
-	<link href="css/ionic.app.css" rel="stylesheet">
+	<link href="css/ionic.app.min.css" rel="stylesheet">
 
 	<!-- ionic/angularjs js -->
 	<script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -14,43 +14,85 @@
 	<script src="cordova.js"></script>
 
 	<!-- your app's js -->
-	<script src="js/app.js"></script>
+	<script src="js/services.mod.js"></script>
+	<script src="js/mouse.svc.js"></script>
+	<script src="js/randomInt.svc.js"></script>
+	<script src="js/directives.mod.js"></script>
+	<script src="js/board.dir.js"></script>
+	<script src="js/focalPoint.dir.js"></script>
+	<script src="js/shape.dir.js"></script>
 	<script src="js/controllers.js"></script>
+	<script src="js/app.js"></script>
 </head>
 
 <body ng-app="triangulate">
-	
-	<ion-side-menus>
-		<ion-side-menu-content ng-controller="GameCtrl">
-			<ion-header-bar align-title="left" class="bar-transparent">
-				<div class="buttons">
-					<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-				</div>
-			</ion-header-bar>
-			<ion-content scroll="false" class="main-content no-header">
-			</ion-content>
-		</ion-side-menu-content>
 
+<ion-side-menus>
+	<ion-side-menu-content ng-controller="GameCtrl">
+		<div class="bar bar-header bar-transparent">
+			<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+			<h1 class="title">Triangulate</h1>
+			<button ng-click="showInstructions()" class="button button-icon icon ion-ios7-help-outline"></button>
+		</div>
+		<ion-content scroll="false" class="main-content no-header">
 
-		<ion-side-menu side="left" ng-controller="MenuCtrl">
-			<header class="bar bar-header bar-dark">
-				<h1 class="title">Leaderboard</h1>
-			</header>
-			<ion-content class="has-header text-center">
-				<div class="list">
-					<div class="item light"
-						collection-repeat="user in leaders"
-						collection-item-width="'100%'"
-						collection-item-height="50"
-						ng-style="{height: getItemHeight(item, $index)}">
-						{{user.name}} - {{user.score}}
+			<board level="level"></board>
+
+			<script id="instructions.html" type="text/ng-template">
+				<ion-modal-view>
+					<div class="bar bar-header bar-stable">
+						<h1 class="title">Triangulate</h1>
+						<button ng-click="hideInstructions()" class="button button-icon icon ion-ios7-close-outline"></button>
 					</div>
+					<ion-content scroll="false" class="has-header">
+						<ion-slide-box>
+							<ion-slide>
+								<div class="box">
+									<div class="card padding">
+										<h1>Slide 1</h1>
+									</div>
+								</div>
+							</ion-slide>
+							<ion-slide>
+								<div class="box">
+									<div class="card padding">
+										<h1>Slide 2</h1>
+									</div>
+								</div>
+							</ion-slide>
+							<ion-slide>
+								<div class="box">
+									<div class="card padding">
+										<h1>Slide 3</h1>
+									</div>
+								</div>
+							</ion-slide>
+						</ion-slide-box>
+					</ion-content>
+				</ion-modal-view>
+			</script>
+		</ion-content>
+	</ion-side-menu-content>
+
+	<ion-side-menu side="left" ng-controller="MenuCtrl">
+		<header class="bar bar-header bar-dark">
+			<h1 class="title">Leaderboard</h1>
+		</header>
+		<ion-content class="has-header text-center">
+			<ion-refresher
+				pulling-text="Pull to refresh..."
+				on-refresh="loadLeaders()">
+			</ion-refresher>
+			<div class="list">
+				<div class="item light"
+						 collection-repeat="gamer in leaders"
+						 collection-item-width="'100%'"
+						 collection-item-height="50">
+					{{gamer.name}} - {{gamer.score}}
 				</div>
-			</ion-content>
-		</ion-side-menu>
-
-
-	</ion-side-menus>
-
+			</div>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>
 </body>
 </html>
