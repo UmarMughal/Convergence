@@ -1,4 +1,4 @@
-angular.module('triangulate.controllers', [])
+angular.module('convergence.controllers', [])
 
 	.controller('MenuCtrl', function ($scope, $timeout) {
 

@@ -1,4 +1,4 @@
-angular.module('triangulate.directives')
+angular.module('convergence.directives')
 
 	.directive('shape', function ($rootScope, $timeout) {
 		return {

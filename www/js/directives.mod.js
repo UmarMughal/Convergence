@@ -1,1 +1,1 @@
-angular.module('triangulate.directives', []);
+angular.module('convergence.directives', []);

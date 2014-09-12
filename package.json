@@ -1,7 +1,7 @@
 {
-	"name": "triangulate",
+	"name": "Convergence",
 	"version": "1.0.0",
-	"description": "triangulate: An Ionic project",
+	"description": "Convergence",
 	"devDependencies": {
 		"bower": "^1.3.3",
 		"gulp": "^3.5.6",

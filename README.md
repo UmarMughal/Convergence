@@ -1,1 +1,1 @@
-![Triangulate](https://github.com/GrumpyWizards/Triangulate/blob/master/promo.jpg)
+![Convergence](https://github.com/GrumpyWizards/Convergence/blob/master/promo.jpg)

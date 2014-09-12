@@ -1,4 +1,4 @@
-angular.module('triangulate.directives')
+angular.module('convergence.directives')
 
 	.directive('board', function (randomInt, mouse, game) {
 		return {
@@ -73,22 +73,22 @@ angular.module('triangulate.directives')
 						$scope.shapes = [
 							{
 								shape: 'circle',
-								color: '#F85D82',
+								color: '#F8E555',
 								angle: randomDegrees(0)
 							},
 							{
 								shape: 'circle',
-								color: '#73E2C2',
+								color: '#5FBAF1',
 								angle: randomDegrees(90)
 							},
 							{
 								shape: 'circle',
-								color: '#F6DC1C',
+								color: '#EC60B8',
 								angle: randomDegrees(180)
 							},
 							{
 								shape: 'circle',
-								color: '#4CA0FA',
+								color: '#3BDF79',
 								angle: randomDegrees(270)
 							}
 						]

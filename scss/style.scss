@@ -31,7 +31,7 @@
 }
 
 .menu {
-	background-color: $dark;
+  background-color: darken($dark, 15%);
 }
 
 .menu .item {
@@ -62,8 +62,8 @@
 .main-content {
   //background: url('/img/bg.jpeg') no-repeat center center fixed;
   //background-size: cover;
-	background-color: #C6C6C6;
-	color: $light;
+  background-color: $dark;
+  color: $dark;
 }
 
 // Help slides
@@ -98,6 +98,7 @@
 
 .timer .dot {
 	font-size: 2em;
+  color: $cream;
 }
 
 
@@ -106,8 +107,8 @@
 
 .shape {
 	position: absolute;
-	width: 750px;
-	height: 750px;
+  width: 1000px;
+  height: 1000px;
 	opacity: 0.8;
 	transform-origin: top left;
 }
@@ -129,6 +130,6 @@
 	transform: translate(-5px, -5px);
 	width: 10px;
 	height: 10px;
-	background-color: $light;
+  background-color: $dark;
 	border-radius: 100%;
 }

@@ -1,4 +1,4 @@
-﻿angular.module('triangulate.services')
+﻿angular.module('convergence.services')
 
 	.factory('game', function () {
 		return {
