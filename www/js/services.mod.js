@@ -1,1 +1,1 @@
-angular.module('triangulate.services', [])
+angular.module('triangulate.services', []);

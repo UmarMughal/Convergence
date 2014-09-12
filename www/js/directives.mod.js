@@ -1,3 +1,1 @@
-angular.module('triangulate.directives', [
-	'triangulate.services'
-])
+angular.module('triangulate.directives', []);

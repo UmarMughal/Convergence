@@ -3,8 +3,8 @@
 
 @font-face {
 	font-family: $headings-font-family;
-  src: url("#{$custom-font-path}/montserrat.eot");
-  src: url("#{$custom-font-path}/montserrat.eot#iefix") format("embedded-opentype"),
+	src: url("#{$custom-font-path}/montserrat.eot");
+	src: url("#{$custom-font-path}/montserrat.eot#iefix") format("embedded-opentype"),
 	url("#{$custom-font-path}/montserrat.ttf") format("truetype"),
 	url("#{$custom-font-path}/montserrat.woff2") format("woff2"),
 	url("#{$custom-font-path}/montserrat.svg#Montserrat") format("svg");
@@ -14,8 +14,8 @@
 
 @font-face {
 	font-family: $body-font-family;
-  src: url("#{$custom-font-path}/roboslab.eot");
-  src: url("#{$custom-font-path}/roboslab.eot#iefix") format("embedded-opentype"),
+	src: url("#{$custom-font-path}/roboslab.eot");
+	src: url("#{$custom-font-path}/roboslab.eot#iefix") format("embedded-opentype"),
 	url("#{$custom-font-path}/roboslab.ttf") format("truetype"),
 	url("#{$custom-font-path}/roboslab.woff2") format("woff2"),
 	url("#{$custom-font-path}/roboslab.svg#Roboslab") format("svg");
@@ -50,10 +50,10 @@
 }
 
 .bar-transparent {
-  .title,
-  .button {
-    color: $light;
-  }
+	.title,
+	.button {
+		color: $light;
+	}
 }
 
 // Content
@@ -62,7 +62,7 @@
 .main-content {
   //background: url('/img/bg.jpeg') no-repeat center center fixed;
   //background-size: cover;
-  background-color: #C6C6C6;
+	background-color: #C6C6C6;
 	color: $light;
 }
 
@@ -70,51 +70,65 @@
 // -------------------------------
 
 .slider {
-  height: 100%;
+	height: 100%;
 }
 
 // Board
 // -------------------------------
 
 .board {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  bottom: 10px;
-  left: 10px;
-  box-shadow: 0 0 40px -10px $dark;
-  overflow: hidden;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	overflow: hidden;
 }
 
-// Triangles
+
+// Timer
 // -------------------------------
 
-.triangle {
+.timer {
 	position: absolute;
-  width: 1000px;
-  height: 1000px;
-  opacity: 0.5;
-  transform-origin: top left;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+}
+
+.timer .dot {
+	font-size: 2em;
+}
+
+
+// Shapes
+// -------------------------------
+
+.shape {
+	position: absolute;
+	width: 750px;
+	height: 750px;
+	opacity: 0.8;
+	transform-origin: top left;
+}
+
+.triangle {
+	opacity: 0.6;
 }
 
 .circle {
-  position: absolute;
-  width: 1000px;
-  height: 1000px;
-  opacity: 0.8;
-  border-radius: 100%;
-  transform-origin: top left;
+	border-radius: 100%;  
 }
 
 // Focal Point
 // -------------------------------
 
 .focal-point {
-  display: none;
-  position: absolute;
-  transform: translate(-5px, -5px);
-  width: 10px;
-  height: 10px;
-  background-color: $light;
-  border-radius: 100%;
+	display: none;
+	position: absolute;
+	transform: translate(-5px, -5px);
+	width: 10px;
+	height: 10px;
+	background-color: $light;
+	border-radius: 100%;
 }

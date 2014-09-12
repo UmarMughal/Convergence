@@ -1,6 +1,7 @@
 angular.module('triangulate', [
 	'ionic',
 	'triangulate.directives',
+	'triangulate.services',
 	'triangulate.controllers'
 ])
 

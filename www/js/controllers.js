@@ -3,9 +3,9 @@ angular.module('triangulate.controllers', [])
 	.controller('MenuCtrl', function ($scope, $timeout) {
 
 		// The leaderboard
-	$scope.leaders = [];
+		$scope.leaders = [];
 
-		$scope.loadLeaders = function () {
+		$scope.loadLeaders = function loadLeaders() {
 			$timeout(function () {
 				for (var i = 0; i < 1000; i++) {
 					$scope.leaders.push({
@@ -18,7 +18,7 @@ angular.module('triangulate.controllers', [])
 		};
 	})
 
-	.controller('GameCtrl', function ($scope, $ionicModal) {
+	.controller('GameCtrl', function ($rootScope, $scope, $ionicModal, game) {
 
 		// The instructions
 		$ionicModal.fromTemplateUrl('instructions.html', {
@@ -28,14 +28,29 @@ angular.module('triangulate.controllers', [])
 			$scope.instructionsModal = modal;
 		});
 
-		$scope.showInstructions = function () {
+		$scope.showInstructions = function showInstructions() {
 			$scope.instructionsModal.show();
 		};
 
-		$scope.hideInstructions = function () {
+		$scope.hideInstructions = function hideInstructions() {
 			$scope.instructionsModal.hide();
 		};
 
+		game.settings = {
+			level: 1,
+			timeLimit: 3
+		};
+
 		// The Game
-		$scope.level = 1;
+		$scope.play = function play() {
+			$rootScope.$broadcast('play');
+		};
+
+		// The Game
+		$scope.reset = function reset() {
+			$rootScope.$broadcast('reset');
+		};
+
+		//$rootScope.$broadcast('pause');
+		//$rootScope.$broadcast('quit');
 	});

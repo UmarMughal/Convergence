@@ -1,13 +1,13 @@
 angular.module('triangulate.directives')
 
-	.directive('shape', function ($timeout) {
+	.directive('shape', function ($rootScope, $timeout) {
 		return {
 			require: '^board',
 			restrict: 'E',
 			scope: {
 				shape: '='
 			},
-			template: '<div class="{{shape.shape}}"></div>',
+			template: '<div class="shape {{shape.shape}}"></div>',
 			link: function (scope, elem, attrs, boardCtrl) {
 
 				var board = document.getElementById('board');
@@ -16,10 +16,10 @@ angular.module('triangulate.directives')
 				// Calculate distance to hide the shape off the screen.
 				var adjacentLength = calculateAdjacent(scope.shape.angle);
 
-				// TODO: Sort out the amount to move the shape off the screen by
+				// Move the shape off the screen
 				var transform =
 					'rotate(' + scope.shape.angle + 'deg) ' +
-					'translate3d(0, -500px, 0) ' +
+					'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
 					'translate3d(' + adjacentLength + 'px, 0px, 0px)';
 				shape.style.top = boardCtrl.focalPointY + 'px';
 				shape.style.left = boardCtrl.focalPointX + 'px';
@@ -27,29 +27,37 @@ angular.module('triangulate.directives')
 				shape.style.transform = transform;
 				shape.style.background = scope.shape.color;
 
-				$timeout(function () {
-					shape.style.transition = 'all 1s linear';
-					// Apply translate
+				$timeout(hint, 100);
+
+				$rootScope.$on('out-of-time', converge);
+
+
+				// Functions 
+				// -------------------------------------
+
+				// Move shape inward slightly to provide a hint to the gamer
+				function hint() {
+					shape.style.transition = 'all 0.3s linear';
 					var transform =
 						'rotate(' + scope.shape.angle + 'deg) ' +
-						'translate3d(0, -500px, 0) ' +
+						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
 						'translate3d(' + adjacentLength * 0.75 + 'px, 0px, 0px)';
 					shape.style.webkitTransform = transform;
 					shape.style.transform = transform;
+				}
 
-				}, 1000);
-
-				$timeout(function () {
-					// Apply translate
+				// Move the shape inward all the way to the focal point
+				function converge() {
+					shape.style.transition = 'all 2s linear';
 					var transform =
 						'rotate(' + scope.shape.angle + 'deg) ' +
-						'translate3d(0, -500px, 0) ' +
+						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
 						'translate3d(' + adjacentLength * 0 + 'px, 0px, 0px)';
 					shape.style.webkitTransform = transform;
 					shape.style.transform = transform;
+				}
 
-				}, 4000);
-
+				// SOH-CAH-TOA and a2 + b2 = c2 joy
 				function calculateAdjacent(angle) {
 					var quadrant = Math.floor(angle / 90);
 					switch (quadrant) {
