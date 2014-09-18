@@ -2,134 +2,241 @@
 // -------------------------------
 
 @font-face {
-	font-family: $headings-font-family;
-	src: url("#{$custom-font-path}/montserrat.eot");
-	src: url("#{$custom-font-path}/montserrat.eot#iefix") format("embedded-opentype"),
-	url("#{$custom-font-path}/montserrat.ttf") format("truetype"),
-	url("#{$custom-font-path}/montserrat.woff2") format("woff2"),
-	url("#{$custom-font-path}/montserrat.svg#Montserrat") format("svg");
-	font-weight: normal;
-	font-style: normal;
+  font-family: $body-font-family;
+  src: url("#{$custom-font-path}/convergence.eot");
+  src: url("#{$custom-font-path}/convergence.eot#iefix") format("embedded-opentype"),
+  url("#{$custom-font-path}/convergence.ttf") format("truetype"),
+  url("#{$custom-font-path}/convergence.woff2") format("woff2"),
+  url("#{$custom-font-path}/convergence.svg#convergence") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@font-face {
-	font-family: $body-font-family;
-	src: url("#{$custom-font-path}/roboslab.eot");
-	src: url("#{$custom-font-path}/roboslab.eot#iefix") format("embedded-opentype"),
-	url("#{$custom-font-path}/roboslab.ttf") format("truetype"),
-	url("#{$custom-font-path}/roboslab.woff2") format("woff2"),
-	url("#{$custom-font-path}/roboslab.svg#Roboslab") format("svg");
-	font-weight: normal;
-	font-style: normal;
+// Buttons 
+// -------------------------------
+
+.button {
+  text-transform: uppercase;
+}
+
+.button-transparent {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 0;
+  color: $light;
+  letter-spacing: 3px;
+
+  &.activated {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: $light;
+  }
 }
 
 // Menu
 // -------------------------------
-
-.title {
-	font-family: $headings-font-family;
-}
 
 .menu {
   background-color: darken($dark, 15%);
 }
 
 .menu .item {
-	background-color: darken($dark, 15%);
-	border-color: transparent;
-	left: 0;
-	right: 0;
+  background-color: darken($dark, 15%);
+  border-color: transparent;
+  left: 0;
+  right: 0;
 }
 
 // Overlapping heading
 // -------------------------------
 
 .bar-transparent {
-	background-color: transparent;
-	border: 0;
+  background-color: transparent;
+  border: 0;
 }
 
 .bar-transparent {
-	.title,
-	.button {
-		color: $light;
-	}
+  .title,
+  .button {
+    color: $light;
+  }
+
+  .points {
+    letter-spacing: 8px;
+    animation-name: diverge;
+    animation-duration: 7s;
+  }
+
+  .app-name {
+    letter-spacing: 0px;
+    animation-name: converge;
+    animation-duration: 7s;
+  }
+}
+
+@keyframes converge {
+  from {
+    letter-spacing: 8px;
+  }
+
+  to {
+    letter-spacing: 0px;
+  }
+}
+
+@keyframes diverge {
+  from {
+    letter-spacing: 0px;
+  }
+
+  to {
+    letter-spacing: 8px;
+  }
 }
 
 // Content
 // -------------------------------
 
 .main-content {
-  //background: url('/img/bg.jpeg') no-repeat center center fixed;
-  //background-size: cover;
+  background: url('/img/bg.jpeg') no-repeat left center fixed;
+  background-size: cover;
   background-color: $dark;
   color: $dark;
+}
+
+// Animation
+// -------------------------------
+
+.fade.ng-enter, .fade-if.ng-leave {
+  transition: all linear 0.5s;
+}
+
+.fade.ng-enter,
+.fade.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.fade.ng-leave,
+.fade.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+// Start screen
+// -------------------------------
+
+.start-screen {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 // Help slides
 // -------------------------------
 
 .slider {
-	height: 100%;
+  height: 100%;
 }
 
 // Board
 // -------------------------------
 
 .board {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	overflow: hidden;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow: hidden;
 }
-
 
 // Timer
 // -------------------------------
 
 .timer {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate3d(-50%, -50%, 0);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .timer .dot {
-	font-size: 2em;
+  font-size: 2em;
   color: $cream;
 }
-
 
 // Shapes
 // -------------------------------
 
 .shape {
-	position: absolute;
+  position: absolute;
   width: 1000px;
   height: 1000px;
-	opacity: 0.8;
-	transform-origin: top left;
+  opacity: 0.7;
+  transform-origin: top left;
 }
 
 .triangle {
-	opacity: 0.6;
+  opacity: 0.6;
 }
 
 .circle {
-	border-radius: 100%;  
+  border-radius: 100%;
 }
 
 // Focal Point
 // -------------------------------
 
 .focal-point {
-	display: none;
-	position: absolute;
-	transform: translate(-5px, -5px);
-	width: 10px;
-	height: 10px;
+  display: none;
+  position: absolute;
+  transform: translate(-8px, -8px);
+  width: 16px;
+  height: 16px;
   background-color: $dark;
-	border-radius: 100%;
+  border-radius: 100%;
+}
+
+.focal-point.reveal {
+  display: block;
+  animation-name: darkripple;
+  animation-duration: 1s;
+
+}
+
+// Pin
+// -------------------------------
+
+.pin {
+  display: none;
+  position: absolute;
+  transform: translate(-8px, -8px);
+  width: 16px;
+  height: 16px;
+  background-color: $light;
+  border-radius: 100%;
+}
+
+.pin.dropped {
+  display: block;
+  animation-name: lightripple;
+  animation-duration: 1s;
+}
+
+@keyframes lightripple {
+  from {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+  }
+
+  to {
+    box-shadow: 0 0 0 200px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes darkripple {
+  from {
+    box-shadow: 0 0 0 0 rgba(68, 68, 68, 1);
+  }
+
+  to {
+    box-shadow: 0 0 0 200px rgba(68, 68, 68, 0);
+  }
 }

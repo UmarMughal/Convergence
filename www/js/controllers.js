@@ -20,7 +20,23 @@ angular.module('convergence.controllers', [])
 
 	.controller('GameCtrl', function ($rootScope, $scope, $ionicModal, game) {
 
-		// The instructions
+		$scope.showStartScreen = true;
+
+		$scope.game = game;
+
+		// The Game
+		$scope.start = function start() {
+			$scope.showStartScreen = false;
+			game.setLevel(1);
+			$rootScope.$broadcast('game.play');
+		};
+
+		$rootScope.$on('game.over', function () {
+			alert('Game over!');
+			$scope.showStartScreen = true;
+		});
+
+		// The Instructions
 		$ionicModal.fromTemplateUrl('instructions.html', {
 			scope: $scope,
 			animation: 'slide-in-up'
@@ -35,22 +51,4 @@ angular.module('convergence.controllers', [])
 		$scope.hideInstructions = function hideInstructions() {
 			$scope.instructionsModal.hide();
 		};
-
-		game.settings = {
-			level: 1,
-			timeLimit: 3
-		};
-
-		// The Game
-		$scope.play = function play() {
-			$rootScope.$broadcast('play');
-		};
-
-		// The Game
-		$scope.reset = function reset() {
-			$rootScope.$broadcast('reset');
-		};
-
-		//$rootScope.$broadcast('pause');
-		//$rootScope.$broadcast('quit');
 	});

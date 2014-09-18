@@ -2177,7 +2177,7 @@ body, .ionic-body {
   color: #555;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Convergence", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
@@ -2472,7 +2472,7 @@ cite {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #555;
   font-weight: 500;
-  font-family: "Montserrat";
+  font-family: "Convergence";
   line-height: 1.2; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small {
     font-weight: normal;
@@ -4834,7 +4834,7 @@ label, input, button, select, textarea {
   line-height: 1.42857; }
 
 input, button, select, textarea {
-  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  font-family: "Convergence", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
 .item-input {
   display: -webkit-box;
@@ -7250,9 +7250,9 @@ a.button {
  * Apply roboto font
  */
 .roboto {
-  font-family: "Roboto", "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  font-family: "Roboto", "Convergence", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
   .roboto input {
-    font-family: "Roboto", "Roboto Slab", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+    font-family: "Roboto", "Convergence", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
 /*
 .platform-android {
@@ -7358,21 +7358,23 @@ a.button {
   transition: none !important; }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("fonts/montserrat.eot");
-  src: url("fonts/montserrat.eot#iefix") format("embedded-opentype"), url("fonts/montserrat.ttf") format("truetype"), url("fonts/montserrat.woff2") format("woff2"), url("fonts/montserrat.svg#Montserrat") format("svg");
+  font-family: "Convergence";
+  src: url("fonts/convergence.eot");
+  src: url("fonts/convergence.eot#iefix") format("embedded-opentype"), url("fonts/convergence.ttf") format("truetype"), url("fonts/convergence.woff2") format("woff2"), url("fonts/convergence.svg#convergence") format("svg");
   font-weight: normal;
   font-style: normal; }
 
-@font-face {
-  font-family: "Roboto Slab";
-  src: url("fonts/roboslab.eot");
-  src: url("fonts/roboslab.eot#iefix") format("embedded-opentype"), url("fonts/roboslab.ttf") format("truetype"), url("fonts/roboslab.woff2") format("woff2"), url("fonts/roboslab.svg#Roboslab") format("svg");
-  font-weight: normal;
-  font-style: normal; }
+.button {
+  text-transform: uppercase; }
 
-.title {
-  font-family: "Montserrat"; }
+.button-transparent {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px; }
+  .button-transparent.activated {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; }
 
 .menu {
   background-color: #2f2f2f; }
@@ -7389,10 +7391,70 @@ a.button {
 
 .bar-transparent .title, .bar-transparent .button {
   color: #fff; }
+.bar-transparent .points {
+  letter-spacing: 8px;
+  -webkit-animation-name: diverge;
+          animation-name: diverge;
+  -webkit-animation-duration: 7s;
+          animation-duration: 7s; }
+.bar-transparent .app-name {
+  letter-spacing: 0px;
+  -webkit-animation-name: converge;
+          animation-name: converge;
+  -webkit-animation-duration: 7s;
+          animation-duration: 7s; }
+
+@-webkit-keyframes converge {
+  from {
+    letter-spacing: 8px; }
+
+  to {
+    letter-spacing: 0px; } }
+
+@keyframes converge {
+  from {
+    letter-spacing: 8px; }
+
+  to {
+    letter-spacing: 0px; } }
+
+@-webkit-keyframes diverge {
+  from {
+    letter-spacing: 0px; }
+
+  to {
+    letter-spacing: 8px; } }
+
+@keyframes diverge {
+  from {
+    letter-spacing: 0px; }
+
+  to {
+    letter-spacing: 8px; } }
 
 .main-content {
+  background: url('/img/bg.jpeg') no-repeat left center fixed;
+  background-size: cover;
   background-color: #555;
   color: #555; }
+
+.fade.ng-enter, .fade-if.ng-leave {
+  -webkit-transition: all linear 0.5s;
+          transition: all linear 0.5s; }
+
+.fade.ng-enter, .fade.ng-leave.ng-leave-active {
+  opacity: 0; }
+
+.fade.ng-leave, .fade.ng-enter.ng-enter-active {
+  opacity: 1; }
+
+.start-screen {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%); }
 
 .slider {
   height: 100%; }
@@ -7420,7 +7482,7 @@ a.button {
   position: absolute;
   width: 1000px;
   height: 1000px;
-  opacity: 0.8;
+  opacity: 0.7;
   -webkit-transform-origin: top left;
       -ms-transform-origin: top left;
           transform-origin: top left; }
@@ -7434,10 +7496,63 @@ a.button {
 .focal-point {
   display: none;
   position: absolute;
-  -webkit-transform: translate(-5px, -5px);
-      -ms-transform: translate(-5px, -5px);
-          transform: translate(-5px, -5px);
-  width: 10px;
-  height: 10px;
+  -webkit-transform: translate(-8px, -8px);
+      -ms-transform: translate(-8px, -8px);
+          transform: translate(-8px, -8px);
+  width: 16px;
+  height: 16px;
   background-color: #555;
   border-radius: 100%; }
+
+.focal-point.reveal {
+  display: block;
+  -webkit-animation-name: darkripple;
+          animation-name: darkripple;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s; }
+
+.pin {
+  display: none;
+  position: absolute;
+  -webkit-transform: translate(-8px, -8px);
+      -ms-transform: translate(-8px, -8px);
+          transform: translate(-8px, -8px);
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 100%; }
+
+.pin.dropped {
+  display: block;
+  -webkit-animation-name: lightripple;
+          animation-name: lightripple;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s; }
+
+@-webkit-keyframes lightripple {
+  from {
+    box-shadow: 0 0 0 0 white; }
+
+  to {
+    box-shadow: 0 0 0 200px rgba(255, 255, 255, 0); } }
+
+@keyframes lightripple {
+  from {
+    box-shadow: 0 0 0 0 white; }
+
+  to {
+    box-shadow: 0 0 0 200px rgba(255, 255, 255, 0); } }
+
+@-webkit-keyframes darkripple {
+  from {
+    box-shadow: 0 0 0 0 #444444; }
+
+  to {
+    box-shadow: 0 0 0 200px rgba(68, 68, 68, 0); } }
+
+@keyframes darkripple {
+  from {
+    box-shadow: 0 0 0 0 #444444; }
+
+  to {
+    box-shadow: 0 0 0 200px rgba(68, 68, 68, 0); } }

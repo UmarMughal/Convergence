@@ -5,20 +5,31 @@ angular.module('convergence.directives')
 			require: '^board',
 			restrict: 'E',
 			scope: {},
-			template: '<div id="focal-point" class="focal-point"></div>',
-			link: function (scope, elem, attrs, board) {
+			template: '<div class="focal-point"></div>',
+			link: function (scope, elem, attrs, boardCtrl) {
 
-				$rootScope.$on('play', postionFocalPoint);
+				var focalPoint = elem.find('div')[0];
+
+				$rootScope.$on('game.over', hideFocalPoint);
+				$rootScope.$on('game.play', positionFocalPoint);
+				$rootScope.$on('game.level-complete', showFocalPoint);
 
 
 				// Functions 
 				// -------------------------------------
 
-				function postionFocalPoint() {
-					var focalPoint = document.getElementById('focal-point');
-					focalPoint.style.top = board.focalPointY + 'px';
-					focalPoint.style.left = board.focalPointX + 'px';
-					//focalPoint.style.display = 'block';
+				function positionFocalPoint() {
+					hideFocalPoint();
+					focalPoint.style.top = boardCtrl.focalPointY + 'px';
+					focalPoint.style.left = boardCtrl.focalPointX + 'px';
+				}
+
+				function hideFocalPoint() {
+					focalPoint.classList.remove('reveal');
+				}
+
+				function showFocalPoint() {
+					focalPoint.classList.add('reveal');
 				}
 			}
 		}

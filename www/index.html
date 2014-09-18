@@ -16,10 +16,10 @@
 	<!-- app's js -->
 	<script src="js/services.mod.js"></script>
 	<script src="js/game.svc.js"></script>
-	<script src="js/mouse.svc.js"></script>
 	<script src="js/randomInt.svc.js"></script>
 
 	<script src="js/directives.mod.js"></script>
+	<script src="js/pin.dir.js"></script>
 	<script src="js/timer.dir.js"></script>
 	<script src="js/board.dir.js"></script>
 	<script src="js/focalPoint.dir.js"></script>
@@ -37,16 +37,19 @@
 			<div class="buttons">
 				<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
 			</div>
-			<h1 class="title">Convergence</h1>
-
-			<div class="buttons">
-				<button ng-click="play()" class="button button-icon icon ion-ios7-play-outline"></button>
+			<h1 class="title fade points" ng-if="!showStartScreen">{{ game.settings.pixels }}</h1>
+			<h1 class="title fade app-name" ng-if="showStartScreen">Convergence</h1>
+			<div class="buttons fade" ng-if="showStartScreen">
 				<button ng-click="showInstructions()" class="button button-icon icon ion-ios7-help-outline"></button>
 			</div>
 		</div>
 		<ion-content scroll="false" class="main-content no-header">
 
 			<board></board>
+
+			<div class="start-screen padding fade" ng-if="showStartScreen">
+				<button ng-click="start()" class="button button-block button-large button-transparent padding">Start game!</button>
+			</div>
 
 		</ion-content>
 	</ion-side-menu-content>

@@ -1,60 +1,70 @@
 angular.module('convergence.directives')
 
-	.directive('board', function (randomInt, mouse, game) {
+	.directive('board', function ($timeout, randomInt, game) {
 		return {
 			restrict: 'E',
-			template: '<div id="board" class="board">' +
+			template: '<div class="board">' +
+				'<shape ng-repeat="shape in shapes" shape="shape"></shape>' +
 				'<timer></timer>' +
 				'<focal-point></focal-point>' +
-				'<shape ng-repeat="shape in shapes" shape="shape"></shape>' +
+				'<pin></pin>' +
 				'</div>',
-			controller: function ($rootScope, $scope) {
+			controller: function ($rootScope, $scope, $element) {
 				var _this = this;
-				var board = document.getElementById('board');
+				var board = $element[0];
+				board.classList.add('board');
 				var boardRect = board.getBoundingClientRect();
-				board.addEventListener("touchstart", mouse.setClickPosition, false);
+				var pinPosition = {};
+				board.addEventListener("touchstart", dropPin, false);
 
-				$rootScope.$on('play', startLevel);
-				$rootScope.$on('out-of-time', endLevel);
-				$rootScope.$on('reset', reset);
+				$rootScope.$on('game.play', startLevel);
+				$rootScope.$on('game.out-of-time', outOfTime);
+				$rootScope.$on('game.end-of-level', endLevel);
+				$rootScope.$on('game.over', gameOver);
 
 
 				// Functions 
 				// -------------------------------------
 
 				function startLevel() {
-					mouse.resetClickPosition();
+					pinPosition = {};
 					setFocalPoint();
 					addShapes();
-					game.playing = true;
+					game.pinEnabled = true;
+				}
+
+				function outOfTime() {
+					game.pinEnabled = false;
+					$timeout(function () {
+						$rootScope.$broadcast('game.end-of-level');
+					}, 1500);
 				}
 
 				function endLevel() {
-					game.playing = false;
-					if (!mouse.position.x || !mouse.position.y) {
-						gameOver();
-					} else {
-						var a = Math.abs(mouse.position.x - _this.focalPointX);
-						var b = Math.abs(mouse.position.x - _this.focalPointX);
+					if (pinPosition.x && pinPosition.y) {
+						var a = Math.abs(pinPosition.x - _this.focalPointX);
+						var b = Math.abs(pinPosition.y - _this.focalPointY);
 						var dist = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)); // a2 + b2 = c2
-						console.log(dist);
-						// Show focal-point
-						// Show accuracy
-						// Show points
-						// Show next level button
+						game.settings.pixels = game.settings.pixels - Math.floor(dist);
+						if (game.settings.pixels > 0)
+							$rootScope.$broadcast('game.level-complete');
+						else
+							$rootScope.$broadcast('game.over');
+					} else {
+						$rootScope.$broadcast('game.over');
 					}
-				};
-
-				function gameOver() {
-					alert('Game over!');
-					reset();
 				}
 
-				function reset() {
-					game.playing = false;
-					mouse.resetClickPosition();
-					_this.focalPointX = undefined;
-					_this.focalPointY = undefined;
+				function dropPin(e) {
+					if (game.pinEnabled) {
+						pinPosition.x = e.changedTouches[0].clientX;
+						pinPosition.y = e.changedTouches[0].clientY;
+						game.pinEnabled = false;
+						$rootScope.$broadcast('game.drop-pin', pinPosition);
+					}
+				}
+
+				function gameOver() {
 					$scope.shapes = [];
 				}
 
@@ -69,30 +79,59 @@ angular.module('convergence.directives')
 				}
 
 				function addShapes() {
-					if (game.settings.level == 1) {
-						$scope.shapes = [
-							{
-								shape: 'circle',
-								color: '#F8E555',
-								angle: randomDegrees(0)
-							},
-							{
-								shape: 'circle',
-								color: '#5FBAF1',
-								angle: randomDegrees(90)
-							},
-							{
-								shape: 'circle',
-								color: '#EC60B8',
-								angle: randomDegrees(180)
-							},
-							{
-								shape: 'circle',
-								color: '#3BDF79',
-								angle: randomDegrees(270)
-							}
-						]
+					var colors = [
+						'#5FBAF1',  // blue
+						'#EC60B8',  // pink
+						'#3BDF79',  // green
+						'#F8E555',  // yellow
+						'#793BDF',  // purple
+						'#3BDFCB']; // orange
+					var angle = 0;
+					var angleDiff = 360 / game.settings.noOfShapes;
+					var shapes = [];
+					for (var i = 0; i < game.settings.noOfShapes; i++) {
+						shapes.push({
+							shape: game.settings.typeOfShapes,
+							color: colors.pop(),
+							angle: randomDegrees(angle)
+						});
+						angle = angle + angleDiff;
 					}
+					$scope.shapes = shapes;
+				}
+
+				_this.calculateAdjacent = function calculateAdjacent(angle) {
+					var quadrant = Math.floor(angle / 90);
+					switch (quadrant) {
+						case 0: // Bottom right corner
+							var a = board.offsetHeight - _this.focalPointY; // Distance between focal point and bottom
+							var b = board.offsetWidth - _this.focalPointX; // Distance between focal point and right
+							var angleReset = angle * 2;
+							break;
+
+						case 1: // Bottom left corner
+							var a = board.offsetHeight - _this.focalPointY; // Distance between focal point and bottom
+							var b = _this.focalPointX; // Distance between left and focal point
+							var angleReset = 180;
+							break;
+
+						case 2: // Top left corner
+							var a = _this.focalPointX; // Distance between left and focal point
+							var b = _this.focalPointY; // Distance between top and focal point
+							var angleReset = 270;
+							break;
+
+						case 3: // Top right corner
+							var a = _this.focalPointY; // Distance between top and focal point
+							var b = board.offsetWidth - _this.focalPointX; // Distance between focal point and right
+							var angleReset = 360;
+							break;
+					}
+
+					angle = 90 - Math.atan(b / a) * (180 / Math.PI) - (angleReset - angle); // The Cosine angle
+					var hypotenuse = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)); // Diagonal distance between focal point and corner
+					var adjacentLength = Math.cos(angle * (Math.PI / 180)) * hypotenuse;
+					return adjacentLength;
 				}
 			}
 		}
