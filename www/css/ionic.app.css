@@ -2363,23 +2363,18 @@ ion-infinite-scroll {
   display: block;
   -webkit-transition: opacity 0.25s;
   transition: opacity 0.25s;
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
   -webkit-flex-direction: row;
   -moz-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   -moz-justify-content: center;
   justify-content: center;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -2655,7 +2650,6 @@ a.subdued {
  * --------------------------------------------------
  */
 .bar {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
@@ -2870,7 +2864,6 @@ a.subdued {
   .bar .buttons, .bar .buttons.left-buttons, .bar .buttons.right-buttons {
     display: inherit; }
   .bar .buttons span {
-    display: -webkit-inline-box;
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex; }
@@ -3101,18 +3094,14 @@ a.subdued {
  * A navigation bar with any number of tab items supported.
  */
 .tabs {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
   -webkit-flex-direction: horizontal;
   -moz-flex-direction: horizontal;
   -ms-flex-direction: horizontal;
   flex-direction: horizontal;
-  -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   -moz-justify-content: center;
@@ -3568,7 +3557,6 @@ a.subdued {
   border-bottom-width: 0; }
 
 .tab-item {
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-flex: 1;
   -ms-flex: 1;
@@ -3660,7 +3648,6 @@ a.subdued {
     color: #555; }
 
 .item.tabs {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
@@ -3901,15 +3888,15 @@ a.subdued {
   left: 50%;
   z-index: 12;
   visibility: hidden;
-  width: 250px;
+  width: 280px;
   max-width: 100%;
-  border-radius: 0px;
-  background-color: rgba(255, 255, 255, 0.9); }
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.65); }
   .popup.popup-hidden {
     -webkit-animation-name: scaleOut;
     animation-name: scaleOut;
-    -webkit-animation-duration: 0.1s;
-    animation-duration: 0.1s;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
     -webkit-animation-fill-mode: both;
@@ -3919,8 +3906,8 @@ a.subdued {
   .popup.active {
     -webkit-animation-name: superScaleIn;
     animation-name: superScaleIn;
-    -webkit-animation-duration: 0.2s;
-    animation-duration: 0.2s;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
     -webkit-animation-fill-mode: both;
@@ -3954,7 +3941,7 @@ a.subdued {
 .popup-buttons .button {
   margin: 0px 5px;
   min-height: 45px;
-  border-radius: 2px;
+  border-radius: 4px;
   line-height: 20px; }
   .popup-buttons .button:first-child {
     margin-left: 0px; }
@@ -3979,17 +3966,14 @@ a.subdued {
   right: 0;
   bottom: 0;
   z-index: 13;
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   -moz-justify-content: center;
   justify-content: center;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -4047,7 +4031,6 @@ a.subdued {
   .item h1:last-child, .item h2:last-child, .item h3:last-child, .item h4:last-child, .item h5:last-child, .item h6:last-child, .item p:last-child {
     margin-bottom: 0; }
   .item .badge {
-    display: -webkit-box;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flexbox;
@@ -4243,12 +4226,10 @@ a.item-content {
  * --------------------------------------------------
  */
 .item-icon-left .icon, .item-icon-right .icon {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -4312,12 +4293,10 @@ a.item-content {
   padding-left: 72px; }
 
 .item-button-left > .button, .item-button-left .item-content > .button {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -4344,12 +4323,10 @@ a.item-content {
   padding-right: 80px; }
 
 .item-button-right > .button, .item-button-right .item-content > .button, .item-button-right > .buttons, .item-button-right .item-content > .buttons {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -4487,12 +4464,10 @@ a.item-content {
   .item-left-edit .button {
     height: 100%; }
     .item-left-edit .button.icon {
-      display: -webkit-box;
       display: -webkit-flex;
       display: -moz-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
       -ms-flex-align: center;
       -webkit-align-items: center;
       -moz-align-items: center;
@@ -4536,12 +4511,10 @@ a.item-content {
     min-width: 50px;
     height: 100%; }
     .item-right-edit .button.icon {
-      display: -webkit-box;
       display: -webkit-flex;
       display: -moz-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-align: center;
       -ms-flex-align: center;
       -webkit-align-items: center;
       -moz-align-items: center;
@@ -4774,12 +4747,10 @@ a.item-content {
  * --------------------------------------------------
  */
 .split-pane {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   -webkit-align-items: stretch;
   -moz-align-items: stretch;
@@ -4788,7 +4759,6 @@ a.item-content {
   height: 100%; }
 
 .split-pane-menu {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 320px;
   -moz-flex: 0 0 320px;
   -ms-flex: 0 0 320px;
@@ -4802,7 +4772,6 @@ a.item-content {
       border-right: none; } }
 
 .split-pane-content {
-  -webkit-box-flex: 1;
   -webkit-flex: 1 0 auto;
   -moz-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
@@ -4837,12 +4806,10 @@ input, button, select, textarea {
   font-family: "Convergence", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
 
 .item-input {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -4852,7 +4819,6 @@ input, button, select, textarea {
   padding: 6px 0 5px 16px; }
   .item-input input {
     border-radius: 0;
-    -webkit-box-flex: 1;
     -webkit-flex: 1 0 220px;
     -moz-flex: 1 0 220px;
     -ms-flex: 1 0 220px;
@@ -4864,7 +4830,6 @@ input, button, select, textarea {
     padding-right: 24px;
     background-color: transparent; }
   .item-input .button .icon {
-    -webkit-box-flex: 0;
     -webkit-flex: 0 0 24px;
     -moz-flex: 0 0 24px;
     -ms-flex: 0 0 24px;
@@ -4876,7 +4841,6 @@ input, button, select, textarea {
     font-size: 16px; }
   .item-input .button-bar {
     border-radius: 0;
-    -webkit-box-flex: 1;
     -webkit-flex: 1 0 220px;
     -moz-flex: 1 0 220px;
     -ms-flex: 1 0 220px;
@@ -4888,12 +4852,10 @@ input, button, select, textarea {
     min-width: 14px; }
 
 .item-input-inset {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -4903,17 +4865,14 @@ input, button, select, textarea {
   padding: 10.66667px; }
 
 .item-input-wrapper {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
   -webkit-flex: 1 0;
   -moz-flex: 1 0;
   -ms-flex: 1 0;
   flex: 1 0;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -4933,7 +4892,6 @@ input, button, select, textarea {
   margin-left: 10.66667px; }
 
 .input-label {
-  -webkit-box-flex: 1;
   -webkit-flex: 1 0 100px;
   -moz-flex: 1 0 100px;
   -ms-flex: 1 0 100px;
@@ -5407,12 +5365,10 @@ input[type="range"] {
     content: ' '; }
 
 .range {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
@@ -5438,7 +5394,6 @@ input[type="range"] {
     background: #555; }
 
 .range .icon {
-  -webkit-box-flex: 0;
   -webkit-flex: 0;
   -moz-flex: 0;
   -ms-flex: 0;
@@ -5449,7 +5404,6 @@ input[type="range"] {
   font-size: 24px; }
 
 .range input {
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-flex: 1;
   -ms-flex: 1;
@@ -5459,7 +5413,6 @@ input[type="range"] {
   margin-left: 10px; }
 
 .range-label {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
   -moz-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
@@ -5587,7 +5540,7 @@ progress {
   min-height: 47px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 2px;
+  border-radius: 6px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
@@ -5976,12 +5929,10 @@ a.button {
  * --------------------------------------------------
  */
 .button-bar {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-flex: 1;
   -ms-flex: 1;
@@ -6003,7 +5954,6 @@ a.button {
       float: left; }
 
 .button-bar > .button {
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-flex: 1;
   -ms-flex: 1;
@@ -6814,7 +6764,6 @@ a.button {
  * up the height of the tallest .col in the same .row.
  */
 .row {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
@@ -6827,7 +6776,6 @@ a.button {
   padding-top: 0; }
 
 .col {
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-flex: 1;
   -ms-flex: 1;
@@ -6839,35 +6787,30 @@ a.button {
 /* Vertically Align Columns */
 /* .row-* vertically aligns every .col in the .row */
 .row-top {
-  -webkit-box-align: start;
   -ms-flex-align: start;
   -webkit-align-items: flex-start;
   -moz-align-items: flex-start;
   align-items: flex-start; }
 
 .row-bottom {
-  -webkit-box-align: end;
   -ms-flex-align: end;
   -webkit-align-items: flex-end;
   -moz-align-items: flex-end;
   align-items: flex-end; }
 
 .row-center {
-  -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-align-items: center;
   -moz-align-items: center;
   align-items: center; }
 
 .row-stretch {
-  -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   -webkit-align-items: stretch;
   -moz-align-items: stretch;
   align-items: stretch; }
 
 .row-baseline {
-  -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   -webkit-align-items: baseline;
   -moz-align-items: baseline;
@@ -6875,19 +6818,19 @@ a.button {
 
 /* .col-* vertically aligns an individual .col */
 .col-top {
-  -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
-  align-self: flex-start; }
+  -webkit-align-self: flex-start;
+          align-self: flex-start; }
 
 .col-bottom {
-  -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
-  align-self: flex-end; }
+  -webkit-align-self: flex-end;
+          align-self: flex-end; }
 
 .col-center {
-  -webkit-align-self: center;
   -ms-flex-item-align: center;
-  align-self: center; }
+  -webkit-align-self: center;
+          align-self: center; }
 
 /* Column Offsets */
 .col-offset-10 {
@@ -6922,7 +6865,6 @@ a.button {
 /* across the grid. However, you can specify individual */
 /* columns to take up a certain size of the available area */
 .col-10 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 10%;
   -moz-flex: 0 0 10%;
   -ms-flex: 0 0 10%;
@@ -6930,7 +6872,6 @@ a.button {
   max-width: 10%; }
 
 .col-20 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 20%;
   -moz-flex: 0 0 20%;
   -ms-flex: 0 0 20%;
@@ -6938,7 +6879,6 @@ a.button {
   max-width: 20%; }
 
 .col-25 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 25%;
   -moz-flex: 0 0 25%;
   -ms-flex: 0 0 25%;
@@ -6946,7 +6886,6 @@ a.button {
   max-width: 25%; }
 
 .col-33, .col-34 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 33.3333%;
   -moz-flex: 0 0 33.3333%;
   -ms-flex: 0 0 33.3333%;
@@ -6954,7 +6893,6 @@ a.button {
   max-width: 33.3333%; }
 
 .col-50 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 50%;
   -moz-flex: 0 0 50%;
   -ms-flex: 0 0 50%;
@@ -6962,7 +6900,6 @@ a.button {
   max-width: 50%; }
 
 .col-66, .col-67 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 66.6666%;
   -moz-flex: 0 0 66.6666%;
   -ms-flex: 0 0 66.6666%;
@@ -6970,7 +6907,6 @@ a.button {
   max-width: 66.6666%; }
 
 .col-75 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 75%;
   -moz-flex: 0 0 75%;
   -ms-flex: 0 0 75%;
@@ -6978,7 +6914,6 @@ a.button {
   max-width: 75%; }
 
 .col-80 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 80%;
   -moz-flex: 0 0 80%;
   -ms-flex: 0 0 80%;
@@ -6986,7 +6921,6 @@ a.button {
   max-width: 80%; }
 
 .col-90 {
-  -webkit-box-flex: 0;
   -webkit-flex: 0 0 90%;
   -moz-flex: 0 0 90%;
   -ms-flex: 0 0 90%;
@@ -7000,13 +6934,10 @@ a.button {
 /* to any columns in the row for clearity */
 @media (max-width: 567px) {
   .responsive-sm {
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column; }
     .responsive-sm .col, .responsive-sm .col-10, .responsive-sm .col-20, .responsive-sm .col-25, .responsive-sm .col-33, .responsive-sm .col-34, .responsive-sm .col-50, .responsive-sm .col-66, .responsive-sm .col-67, .responsive-sm .col-75, .responsive-sm .col-80, .responsive-sm .col-90 {
-      -webkit-box-flex: 1;
       -webkit-flex: 1;
       -moz-flex: 1;
       -ms-flex: 1;
@@ -7018,13 +6949,10 @@ a.button {
 
 @media (max-width: 767px) {
   .responsive-md {
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column; }
     .responsive-md .col, .responsive-md .col-10, .responsive-md .col-20, .responsive-md .col-25, .responsive-md .col-33, .responsive-md .col-34, .responsive-md .col-50, .responsive-md .col-66, .responsive-md .col-67, .responsive-md .col-75, .responsive-md .col-80, .responsive-md .col-90 {
-      -webkit-box-flex: 1;
       -webkit-flex: 1;
       -moz-flex: 1;
       -ms-flex: 1;
@@ -7036,13 +6964,10 @@ a.button {
 
 @media (max-width: 1023px) {
   .responsive-lg {
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column; }
     .responsive-lg .col, .responsive-lg .col-10, .responsive-lg .col-20, .responsive-lg .col-25, .responsive-lg .col-33, .responsive-lg .col-34, .responsive-lg .col-50, .responsive-lg .col-66, .responsive-lg .col-67, .responsive-lg .col-75, .responsive-lg .col-80, .responsive-lg .col-90 {
-      -webkit-box-flex: 1;
       -webkit-flex: 1;
       -moz-flex: 1;
       -ms-flex: 1;
@@ -7368,12 +7293,12 @@ a.button {
   text-transform: uppercase; }
 
 .button-transparent {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.65);
   border: 0;
   color: #fff;
   letter-spacing: 3px; }
   .button-transparent.activated {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.85);
     color: #fff; }
 
 .menu {
@@ -7404,43 +7329,16 @@ a.button {
   -webkit-animation-duration: 7s;
           animation-duration: 7s; }
 
-@-webkit-keyframes converge {
-  from {
-    letter-spacing: 8px; }
-
-  to {
-    letter-spacing: 0px; } }
-
-@keyframes converge {
-  from {
-    letter-spacing: 8px; }
-
-  to {
-    letter-spacing: 0px; } }
-
-@-webkit-keyframes diverge {
-  from {
-    letter-spacing: 0px; }
-
-  to {
-    letter-spacing: 8px; } }
-
-@keyframes diverge {
-  from {
-    letter-spacing: 0px; }
-
-  to {
-    letter-spacing: 8px; } }
-
 .main-content {
-  background: url('/img/bg.jpeg') no-repeat left center fixed;
+  background: url('/img/bg.jpeg') no-repeat center fixed;
   background-size: cover;
   background-color: #555;
-  color: #555; }
+  color: #555;
+  box-shadow: 0 50px 100px -25px #000 inset; }
 
 .fade.ng-enter, .fade-if.ng-leave {
-  -webkit-transition: all linear 0.5s;
-          transition: all linear 0.5s; }
+  -webkit-transition: all linear 1s;
+          transition: all linear 1s; }
 
 .fade.ng-enter, .fade.ng-leave.ng-leave-active {
   opacity: 0; }
@@ -7451,7 +7349,7 @@ a.button {
 .start-screen {
   position: absolute;
   width: 100%;
-  top: 50%;
+  top: 75%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%); }
@@ -7480,8 +7378,8 @@ a.button {
 
 .shape {
   position: absolute;
-  width: 1000px;
-  height: 1000px;
+  width: 3000px;
+  height: 3000px;
   opacity: 0.7;
   -webkit-transform-origin: top left;
       -ms-transform-origin: top left;
@@ -7529,6 +7427,24 @@ a.button {
   -webkit-animation-duration: 1s;
           animation-duration: 1s; }
 
+.popup {
+  border: 0;
+  color: #fff;
+  text-align: center; }
+
+.popup-head {
+  border: 0; }
+  .popup-head h3 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 8px; }
+  .popup-head h5 {
+    color: #fff;
+    text-transform: uppercase; }
+
+.popup-buttons .button {
+  border: 0; }
+
 @-webkit-keyframes lightripple {
   from {
     box-shadow: 0 0 0 0 white; }
@@ -7556,3 +7472,31 @@ a.button {
 
   to {
     box-shadow: 0 0 0 200px rgba(68, 68, 68, 0); } }
+
+@-webkit-keyframes converge {
+  from {
+    letter-spacing: 8px; }
+
+  to {
+    letter-spacing: 0px; } }
+
+@keyframes converge {
+  from {
+    letter-spacing: 8px; }
+
+  to {
+    letter-spacing: 0px; } }
+
+@-webkit-keyframes diverge {
+  from {
+    letter-spacing: 0px; }
+
+  to {
+    letter-spacing: 8px; } }
+
+@keyframes diverge {
+  from {
+    letter-spacing: 0px; }
+
+  to {
+    letter-spacing: 8px; } }

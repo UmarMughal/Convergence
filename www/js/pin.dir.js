@@ -9,6 +9,7 @@ angular.module('convergence.directives')
 
 				$rootScope.$on('game.play', remove);
 				$rootScope.$on('game.drop-pin', drop);
+				$rootScope.$on('game.over', remove);
 				$rootScope.$on('$destroy', remove);
 
 

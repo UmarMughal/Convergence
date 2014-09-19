@@ -10,9 +10,10 @@ angular.module('convergence.directives')
 
 				var focalPoint = elem.find('div')[0];
 
-				$rootScope.$on('game.over', hideFocalPoint);
+				$rootScope.$on('game.reset', hideFocalPoint);
 				$rootScope.$on('game.play', positionFocalPoint);
 				$rootScope.$on('game.level-complete', showFocalPoint);
+				$rootScope.$on('game.over', showFocalPoint);
 
 
 				// Functions 

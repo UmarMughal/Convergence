@@ -25,9 +25,16 @@ angular.module('convergence.directives')
 				shape.style.transform = transform;
 				shape.style.background = scope.shape.color;
 
-				$timeout(hint, 100);
+				var hintTimer = $timeout(hint, 100);
 
 				$rootScope.$on('game.out-of-time', converge);
+
+				scope.$on('$destroy', function () {
+					if (angular.isDefined(hintTimer)) {
+						$timeout.cancel(hintTimer);
+						hintTimer = undefined;
+					}
+				});
 
 
 				// Functions 
@@ -35,7 +42,7 @@ angular.module('convergence.directives')
 
 				// Move shape inward slightly to provide a hint to the gamer
 				function hint() {
-					shape.style.transition = 'all 0.5s linear';
+					shape.style.transition = 'all 0.3s linear';
 					var transform =
 						'rotate(' + scope.shape.angle + 'deg) ' +
 						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
@@ -46,7 +53,7 @@ angular.module('convergence.directives')
 
 				// Move the shape inward all the way to the focal point
 				function converge() {
-					shape.style.transition = 'all 1.5s linear';
+					shape.style.transition = 'all 0.75s linear';
 					var transform =
 						'rotate(' + scope.shape.angle + 'deg) ' +
 						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +

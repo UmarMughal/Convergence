@@ -17,10 +17,10 @@ angular.module('convergence.directives')
 				var pinPosition = {};
 				board.addEventListener("touchstart", dropPin, false);
 
+				$rootScope.$on('game.reset', reset);
 				$rootScope.$on('game.play', startLevel);
 				$rootScope.$on('game.out-of-time', outOfTime);
 				$rootScope.$on('game.end-of-level', endLevel);
-				$rootScope.$on('game.over', gameOver);
 
 
 				// Functions 
@@ -37,7 +37,7 @@ angular.module('convergence.directives')
 					game.pinEnabled = false;
 					$timeout(function () {
 						$rootScope.$broadcast('game.end-of-level');
-					}, 1500);
+					}, 750);
 				}
 
 				function endLevel() {
@@ -64,7 +64,8 @@ angular.module('convergence.directives')
 					}
 				}
 
-				function gameOver() {
+				function reset() {
+					game.reset();
 					$scope.shapes = [];
 				}
 
@@ -79,13 +80,15 @@ angular.module('convergence.directives')
 				}
 
 				function addShapes() {
+					$scope.shapes = [];
 					var colors = [
-						'#5FBAF1',  // blue
-						'#EC60B8',  // pink
-						'#3BDF79',  // green
-						'#F8E555',  // yellow
-						'#793BDF',  // purple
-						'#3BDFCB']; // orange
+						'#2c97c0', // blue
+						'#b93085', // pink
+						'#f2f2f2', // white
+						'#c5b222', // yellow
+						'#333333', // green
+						'#08ac98'  // orange
+					];
 					var angle = 0;
 					var angleDiff = 360 / game.settings.noOfShapes;
 					var shapes = [];

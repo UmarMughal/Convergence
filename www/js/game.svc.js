@@ -8,9 +8,9 @@
 		};
 
 		var HINT = {
-			small: 0.8,
-			medium: 0.65,
-			large: 0.5
+			small: 0.85,
+			medium: 0.75,
+			large: 0.65
 		};
 
 		var TARGET = {
@@ -20,17 +20,21 @@
 			none: 0
 		};
 
-		var game = {
-			pinEnabled: false,
-			settings: {
+		function init() {
+			return {
 				level: 1,
 				noOfShapes: 6,
 				typeOfShapes: SHAPE.square,
 				timeLimit: 4,
 				hint: HINT.large,
 				target: TARGET.none,
-				pixels: 10000
-			},
+				pixels: 1000
+			}
+		}
+
+		var game = {
+			pinEnabled: false,
+			settings: new init(),
 			setLevel: function setLevel(level) {
 				if (level === 1)
 					buildLevel(level, 6, SHAPE.square, 4, HINT.large, TARGET.none);
@@ -69,6 +73,9 @@
 			},
 			nextLevel: function () {
 				game.setLevel(game.settings.level + 1);
+			},
+			reset: function () {
+				game.settings = new init();
 			}
 		}
 

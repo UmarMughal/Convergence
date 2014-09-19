@@ -20,13 +20,13 @@
 }
 
 .button-transparent {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.65);
   border: 0;
   color: $light;
   letter-spacing: 3px;
 
   &.activated {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.85);
     color: $light;
   }
 }
@@ -72,41 +72,22 @@
   }
 }
 
-@keyframes converge {
-  from {
-    letter-spacing: 8px;
-  }
-
-  to {
-    letter-spacing: 0px;
-  }
-}
-
-@keyframes diverge {
-  from {
-    letter-spacing: 0px;
-  }
-
-  to {
-    letter-spacing: 8px;
-  }
-}
-
 // Content
 // -------------------------------
 
 .main-content {
-  background: url('/img/bg.jpeg') no-repeat left center fixed;
+  background: url('/img/bg.jpeg') no-repeat center fixed;
   background-size: cover;
   background-color: $dark;
   color: $dark;
+  box-shadow: 0 50px 100px -25px #000 inset;
 }
 
 // Animation
 // -------------------------------
 
 .fade.ng-enter, .fade-if.ng-leave {
-  transition: all linear 0.5s;
+  transition: all linear 1s;
 }
 
 .fade.ng-enter,
@@ -125,7 +106,7 @@
 .start-screen {
   position: absolute;
   width: 100%;
-  top: 50%;
+  top: 75%;
   transform: translateY(-50%);
 }
 
@@ -168,8 +149,8 @@
 
 .shape {
   position: absolute;
-  width: 1000px;
-  height: 1000px;
+  width: 3000px;
+  height: 3000px;
   opacity: 0.7;
   transform-origin: top left;
 }
@@ -221,6 +202,36 @@
   animation-duration: 1s;
 }
 
+// Popups
+// -------------------------------
+
+.popup {
+  border: 0;
+  color: $light;
+  text-align: center;
+}
+
+.popup-head {
+  border: 0;
+
+  h3 {
+    color: $light;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+  }
+  h5 {
+    color: $light;
+    text-transform: uppercase;
+  }
+}
+
+.popup-buttons .button {
+  border: 0;
+}
+
+// Animations
+// -------------------------------
+
 @keyframes lightripple {
   from {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
@@ -238,5 +249,25 @@
 
   to {
     box-shadow: 0 0 0 200px rgba(68, 68, 68, 0);
+  }
+}
+
+@keyframes converge {
+  from {
+    letter-spacing: 8px;
+  }
+
+  to {
+    letter-spacing: 0px;
+  }
+}
+
+@keyframes diverge {
+  from {
+    letter-spacing: 0px;
+  }
+
+  to {
+    letter-spacing: 8px;
   }
 }

@@ -68,7 +68,7 @@ $scroll-refresh-icon-color: #666666 !default;
 $button-color: #222 !default;
 $button-block-margin: 10px !default;
 $button-clear-padding: 6px !default;
-$button-border-radius: 2px !default;
+$button-border-radius: $border-radius-large !default;
 $button-border-width: 1px !default;
 
 $button-font-size: 16px !default;
@@ -593,15 +593,15 @@ $sheet-border-radius-bottom: 0px 0px 3px 3px !default;
 // Popups
 // -------------------------------
 
-$popup-width: 250px !default;
+$popup-width: 280px !default;
 $popup-enter-animation: superScaleIn !default;
-$popup-enter-animation-duration: 0.2s !default;
-$popup-leave-animation-duration: 0.1s !default;
+$popup-enter-animation-duration: 0.3s !default;
+$popup-leave-animation-duration: 0.3s !default;
 
-$popup-border-radius: 0px !default;
-$popup-background-color: rgba(255, 255, 255, 0.9) !default;
+$popup-border-radius: $border-radius-large !default;
+$popup-background-color: rgba(0, 0, 0, 0.65) !default;
 
-$popup-button-border-radius: 2px !default;
+$popup-button-border-radius: $border-radius-base !default;
 $popup-button-line-height: 20px !default;
 $popup-button-min-height: 45px !default;
 
