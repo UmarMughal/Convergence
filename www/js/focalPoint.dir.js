@@ -21,8 +21,8 @@ angular.module('convergence.directives')
 
 				function positionFocalPoint() {
 					hideFocalPoint();
-					focalPoint.style.top = boardCtrl.focalPointY + 'px';
-					focalPoint.style.left = boardCtrl.focalPointX + 'px';
+					focalPoint.style.top = boardCtrl.focalPointY - 8 + 'px';
+					focalPoint.style.left = boardCtrl.focalPointX - 8 + 'px';
 				}
 
 				function hideFocalPoint() {

@@ -9,7 +9,7 @@ angular.module('convergence.directives')
 
 				$rootScope.$on('game.play', remove);
 				$rootScope.$on('game.drop-pin', drop);
-				$rootScope.$on('game.over', remove);
+				$rootScope.$on('game.reset', remove);
 				$rootScope.$on('$destroy', remove);
 
 
@@ -18,8 +18,8 @@ angular.module('convergence.directives')
 
 				function drop(e, pinPosition) {
 					pin.classList.remove('dropped');
-					pin.style.top = pinPosition.y + 'px';
-					pin.style.left = pinPosition.x + 'px';
+					pin.style.top = pinPosition.y - 8 + 'px';
+					pin.style.left = pinPosition.x - 8 + 'px';
 					pin.classList.add('dropped');
 				}
 

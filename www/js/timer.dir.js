@@ -3,7 +3,7 @@ angular.module('convergence.directives')
 	.directive('timer', function ($rootScope, $interval, game) {
 		return {
 			restrict: 'E',
-			template: '<div class="timer text-center">' +
+			template: '<div class="timer text-center rounded fade" ng-if="dots.length > 0">' +
 				'<span class="dot" ng-repeat="dot in dots track by $index">&bull;<span>' +
 				'</div>',
 			link: function (scope) {

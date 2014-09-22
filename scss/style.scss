@@ -17,13 +17,13 @@
 
 .button {
   text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 .button-transparent {
   background-color: rgba(0, 0, 0, 0.65);
   border: 0;
   color: $light;
-  letter-spacing: 3px;
 
   &.activated {
     background-color: rgba(0, 0, 0, 0.85);
@@ -49,8 +49,10 @@
 // -------------------------------
 
 .bar-transparent {
+  background-image: none;
   background-color: transparent;
   border: 0;
+  box-shadow: none;
 }
 
 .bar-transparent {
@@ -76,11 +78,23 @@
 // -------------------------------
 
 .main-content {
-  background: url('/img/bg.jpeg') no-repeat center fixed;
+  background: url('../img/bg.jpeg') no-repeat center fixed;
   background-size: cover;
   background-color: $dark;
   color: $dark;
   box-shadow: 0 50px 100px -25px #000 inset;
+}
+
+// Playing backdrop
+// -------------------------------
+.playing-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 // Animation
@@ -105,9 +119,21 @@
 
 .start-screen {
   position: absolute;
-  width: 100%;
+  width: 85%;
+  left: 50%;
   top: 75%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+}
+
+.highscore {
+  color: #fff;
+  font-size: 1.2em;
+  letter-spacing: 5px;
+
+  .icon {
+    font-size: 1.5em;
+    vertical-align: middle;
+  }
 }
 
 // Help slides
@@ -136,6 +162,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 120px;
+  height: 25px;
+  letter-spacing: 5px;
+  padding: 2px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.35);
   transform: translate3d(-50%, -50%, 0);
 }
 
@@ -149,9 +181,7 @@
 
 .shape {
   position: absolute;
-  width: 3000px;
-  height: 3000px;
-  opacity: 0.7;
+  box-shadow: 0 0 12px -4px #222;
   transform-origin: top left;
 }
 
@@ -169,18 +199,17 @@
 .focal-point {
   display: none;
   position: absolute;
-  transform: translate(-8px, -8px);
   width: 16px;
   height: 16px;
-  background-color: $dark;
+  background-color: $hotpink;
   border-radius: 100%;
+  border: 3px solid #fff;
 }
 
 .focal-point.reveal {
   display: block;
-  animation-name: darkripple;
-  animation-duration: 1s;
-
+  animation-name: bounceIn;
+  animation-duration: 0.7s;
 }
 
 // Pin
@@ -189,17 +218,36 @@
 .pin {
   display: none;
   position: absolute;
-  transform: translate(-8px, -8px);
   width: 16px;
   height: 16px;
-  background-color: $light;
+  background-color: $positive;
   border-radius: 100%;
+  border: 3px solid #fff;
 }
 
 .pin.dropped {
   display: block;
-  animation-name: lightripple;
-  animation-duration: 1s;
+  animation-name: bounceIn;
+  animation-duration: 0.7s;
+  animation-fill-mode: both;
+}
+
+// Target
+// -------------------------------
+
+.target {
+  display: none;
+  position: absolute;
+  background-color: $balanced;
+  border-radius: 100%;
+  border: 3px solid darken($balanced, 20%);
+  opacity: 0.6;
+}
+
+.target.reveal {
+  display: block;
+  animation-name: grow;
+  animation-duration: 0.7s;
 }
 
 // Popups
@@ -209,18 +257,20 @@
   border: 0;
   color: $light;
   text-align: center;
+  font-size: 1.2em;
 }
 
 .popup-head {
   border: 0;
+  font-size: 1em;
 
   h3 {
     color: $light;
     text-transform: uppercase;
-    letter-spacing: 8px;
+    letter-spacing: 5px;
   }
   h5 {
-    color: $light;
+    color: #74f6dc;
     text-transform: uppercase;
   }
 }
@@ -232,23 +282,46 @@
 // Animations
 // -------------------------------
 
-@keyframes lightripple {
-  from {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+@keyframes bounceIn {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
   }
 
-  to {
-    box-shadow: 0 0 0 200px rgba(255, 255, 255, 0);
+  0% {
+    opacity: 0;
+    transform: scale3d(.2, .2, .2);
+  }
+
+  20% {
+    transform: scale3d(1.3, 1.3, 1.3);
+  }
+
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale3d(1.08, 1.08, 1.08);
+  }
+
+  80% {
+    transform: scale3d(.92, .92, .92);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
   }
 }
 
-@keyframes darkripple {
+@keyframes grow {
   from {
-    box-shadow: 0 0 0 0 rgba(68, 68, 68, 1);
+    transform: scale(0);
   }
 
   to {
-    box-shadow: 0 0 0 200px rgba(68, 68, 68, 0);
+    transform: scale(1);
   }
 }
 

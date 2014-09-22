@@ -5,6 +5,24 @@ angular.module('convergence', [
 	'convergence.controllers'
 ])
 
+	.constant('TARGET', {
+		small: 250,
+		large: 350,
+		none: 0
+	})
+
+	.constant('SHAPE', {
+		square: 'square',
+		circle: 'circle',
+		multi: 'multi'
+	})
+
+	.constant('HINT', {
+		small: 0.85,
+		medium: 0.75,
+		large: 0.65
+	})
+
 	.run(function ($ionicPlatform) {
 		$ionicPlatform.ready(function () {
 			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

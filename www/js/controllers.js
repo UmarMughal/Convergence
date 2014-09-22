@@ -18,7 +18,7 @@ angular.module('convergence.controllers', [])
 		};
 	})
 
-	.controller('GameCtrl', function ($rootScope, $scope, $timeout, $ionicModal, $ionicPopup, game) {
+	.controller('GameCtrl', function ($rootScope, $scope, $timeout, $ionicModal, $ionicPopup, game, TARGET) {
 
 		$scope.showStartScreen = true;
 
@@ -37,46 +37,56 @@ angular.module('convergence.controllers', [])
 
 		$rootScope.$on('game.over', gameOver);
 
-		function levelComplete () {
-			var levelCompletePopup = $ionicPopup.alert({
-				title: 'Level Complete',
-				template: '<p>Level ' + game.settings.level + '</p>' +
-					'<p><small>' + game.settings.pixels + ' pixels left</small></p>',
-				okText: 'Next level',
-				okType: 'button-dark'
-			});
-			levelCompletePopup.then(function (res) {
-				game.nextLevel();
-				$rootScope.$broadcast('game.play');
-			});
+		function levelComplete() {
+			var timeoutDuration = 1000;
+			if (game.settings.target !== TARGET.none) timeoutDuration = 2000;
+			$timeout(function () {
+				var levelCompletePopup = $ionicPopup.alert({
+					title: 'Level Complete',
+					template: '<p>Level ' + game.settings.level + '</p>' +
+						'<p><strong>' + game.settings.pixels + ' points left</strong></p>',
+					okText: 'Next level',
+					okType: 'button-positive'
+				});
+				levelCompletePopup.then(function (res) {
+					game.nextLevel();
+					$rootScope.$broadcast('game.play');
+				});
+			}, timeoutDuration);
 		}
 
 		function gameOver() {
 			var level = game.settings.level - 1;
 			var subTitle = '';
-			var msg = '<p>Level ' + level + '</p><p><small>Think you can do better?</small></p>';
+			var msg = '<p><strong>Level ' + level + '</strong></p>';
 			var btnText = 'Continue';
 			// On game over save the high score and update the UI
 			if (level > 1 && (!localStorage.highScore || localStorage.highScore < level)) {
 				$scope.highScore = localStorage.highScore = level;
 				subTitle = 'New high score!';
 			}
+
+			// TIPS
 			if (level === 0) {
-				msg = "<p>You didn't complete the level!</p><p><small>Tap where you think the shapes will overlap...</small></p>";
+				msg = '<p>You didn\'t complete the level!</p><p><small><strong>Tip:</strong> Tap where you think the shapes are going to overlap.</small></p>';
 				btnText = 'Try again';
 			}
 
-			var gameOverPopup = $ionicPopup.alert({
-				title: 'Game Over',
-				subTitle: subTitle,
-				template: msg,
-				okText: btnText,
-				okType: 'button-dark'
-			});
-			gameOverPopup.then(function (res) {
-				$scope.showStartScreen = true;
-				$rootScope.$broadcast('game.reset');
-			});
+			var timeoutDuration = 1000;
+			if (game.settings.target !== TARGET.none) timeoutDuration = 2000;
+			$timeout(function () {
+				var gameOverPopup = $ionicPopup.alert({
+					title: 'Game Over',
+					subTitle: subTitle,
+					template: msg,
+					okText: btnText,
+					okType: 'button-positive'
+				});
+				gameOverPopup.then(function (res) {
+					$scope.showStartScreen = true;
+					$rootScope.$broadcast('game.reset');
+				});
+			}, timeoutDuration);
 		}
 
 		// The Instructions

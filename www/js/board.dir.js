@@ -1,21 +1,25 @@
 angular.module('convergence.directives')
 
-	.directive('board', function ($timeout, randomInt, game) {
+	.directive('board', function ($timeout, randomInt, game, TARGET) {
 		return {
 			restrict: 'E',
 			template: '<div class="board">' +
 				'<shape ng-repeat="shape in shapes" shape="shape"></shape>' +
 				'<timer></timer>' +
+				'<target></target>' +
 				'<focal-point></focal-point>' +
 				'<pin></pin>' +
 				'</div>',
 			controller: function ($rootScope, $scope, $element) {
-				var _this = this;
 				var board = $element[0];
 				board.classList.add('board');
-				var boardRect = board.getBoundingClientRect();
-				var pinPosition = {};
 				board.addEventListener("touchstart", dropPin, false);
+
+				var _this = this;
+				_this.width = window.outerWidth;
+				_this.height = window.outerHeight;
+
+				var pinPosition = {};
 
 				$rootScope.$on('game.reset', reset);
 				$rootScope.$on('game.play', startLevel);
@@ -41,17 +45,27 @@ angular.module('convergence.directives')
 				}
 
 				function endLevel() {
-					if (pinPosition.x && pinPosition.y) {
-						var a = Math.abs(pinPosition.x - _this.focalPointX);
-						var b = Math.abs(pinPosition.y - _this.focalPointY);
-						var dist = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)); // a2 + b2 = c2
-						game.settings.pixels = game.settings.pixels - Math.floor(dist);
-						if (game.settings.pixels > 0)
-							$rootScope.$broadcast('game.level-complete');
-						else
-							$rootScope.$broadcast('game.over');
-					} else {
+					if (!pinPosition.x || !pinPosition.y) {
 						$rootScope.$broadcast('game.over');
+						return;
+					}
+					var a = Math.abs(pinPosition.x - _this.focalPointX);
+					var b = Math.abs(pinPosition.y - _this.focalPointY);
+					var dist = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)); // a2 + b2 = c2
+					game.settings.pixels = game.settings.pixels - Math.floor(dist);
+
+					if (game.settings.target !== TARGET.none && dist > game.settings.target / 2) {
+						// If target is in play check the pin is inside it, if not game over
+						$rootScope.$broadcast('game.over');
+
+					} else if (game.settings.pixels <= 0) {
+						// If no more pixels, set to 0, game over
+						game.settings.pixels = 0;
+						$rootScope.$broadcast('game.over');
+					}
+					else {
+						// If inside target and pixels remaining let's crack on
+						$rootScope.$broadcast('game.level-complete');
 					}
 				}
 
@@ -75,8 +89,8 @@ angular.module('convergence.directives')
 
 				function setFocalPoint() {
 					var focalPointPadding = 50;
-					_this.focalPointX = randomInt.generate(boardRect.left + focalPointPadding, boardRect.right - focalPointPadding);
-					_this.focalPointY = randomInt.generate(boardRect.top + focalPointPadding, boardRect.bottom - focalPointPadding);
+					_this.focalPointX = randomInt.generate(focalPointPadding, window.outerWidth - focalPointPadding);
+					_this.focalPointY = randomInt.generate(focalPointPadding, window.outerHeight - focalPointPadding);
 				}
 
 				function addShapes() {
@@ -86,8 +100,9 @@ angular.module('convergence.directives')
 						'#b93085', // pink
 						'#f2f2f2', // white
 						'#c5b222', // yellow
-						'#333333', // green
-						'#08ac98'  // orange
+						'#333333', // black
+						'#08ac98', // green
+						'#ffa500'  // orange
 					];
 					var angle = 0;
 					var angleDiff = 360 / game.settings.noOfShapes;
@@ -95,7 +110,7 @@ angular.module('convergence.directives')
 					for (var i = 0; i < game.settings.noOfShapes; i++) {
 						shapes.push({
 							shape: game.settings.typeOfShapes,
-							color: colors.pop(),
+							color: colors[randomInt.generate(0, 5)],
 							angle: randomDegrees(angle)
 						});
 						angle = angle + angleDiff;
@@ -138,4 +153,5 @@ angular.module('convergence.directives')
 				}
 			}
 		}
-	});
+	})
+;
