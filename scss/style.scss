@@ -238,9 +238,10 @@
 .target {
   display: none;
   position: absolute;
-  background-color: $balanced;
+  background: $balanced;
+  background-image: repeating-linear-gradient(-45deg, rgba($balanced, 0.6), rgba($balanced, 0.6) 25px, rgba(darken($balanced, 20%), 0.9) 25px, rgba(darken($balanced, 20%), 0.9) 50px);
   border-radius: 100%;
-  border: 3px solid darken($balanced, 20%);
+  border: 3px solid darken($balanced, 25%);
   opacity: 0.6;
 }
 
@@ -317,11 +318,11 @@
 
 @keyframes grow {
   from {
-    transform: scale(0);
+    transform: scale(0) rotate(-180deg);
   }
 
   to {
-    transform: scale(1);
+    transform: scale(1) rotate(0);
   }
 }
 

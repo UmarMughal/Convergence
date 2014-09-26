@@ -14,10 +14,11 @@ angular.module('convergence.directives')
 				var board = $element[0];
 				board.classList.add('board');
 				board.addEventListener("touchstart", dropPin, false);
+				board.addEventListener("click", dropPin, false);
 
 				var _this = this;
-				_this.width = window.outerWidth;
-				_this.height = window.outerHeight;
+				_this.width = board.getClientRects()[0].right - board.getClientRects()[0].left;
+				_this.height = board.getClientRects()[0].bottom - board.getClientRects()[0].top;
 
 				var pinPosition = {};
 
@@ -70,9 +71,15 @@ angular.module('convergence.directives')
 				}
 
 				function dropPin(e) {
+					e.preventDefault();
 					if (game.pinEnabled) {
-						pinPosition.x = e.changedTouches[0].clientX;
-						pinPosition.y = e.changedTouches[0].clientY;
+						if (e.changedTouches) {
+							pinPosition.x = e.changedTouches[0].clientX;
+							pinPosition.y = e.changedTouches[0].clientY;
+						} else {
+							pinPosition.x = e.clientX;
+							pinPosition.y = e.clientY;
+						}
 						game.pinEnabled = false;
 						$rootScope.$broadcast('game.drop-pin', pinPosition);
 					}
@@ -89,8 +96,8 @@ angular.module('convergence.directives')
 
 				function setFocalPoint() {
 					var focalPointPadding = 50;
-					_this.focalPointX = randomInt.generate(focalPointPadding, window.outerWidth - focalPointPadding);
-					_this.focalPointY = randomInt.generate(focalPointPadding, window.outerHeight - focalPointPadding);
+					_this.focalPointX = randomInt.generate(focalPointPadding, _this.width - focalPointPadding);
+					_this.focalPointY = randomInt.generate(focalPointPadding, _this.height - focalPointPadding);
 				}
 
 				function addShapes() {

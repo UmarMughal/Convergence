@@ -6,15 +6,14 @@ angular.module('convergence', [
 ])
 
 	.constant('TARGET', {
-		small: 250,
-		large: 350,
+		small: 150,
+		large: 250,
 		none: 0
 	})
 
 	.constant('SHAPE', {
 		square: 'square',
-		circle: 'circle',
-		multi: 'multi'
+		circle: 'circle'
 	})
 
 	.constant('HINT', {

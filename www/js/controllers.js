@@ -38,13 +38,17 @@ angular.module('convergence.controllers', [])
 		$rootScope.$on('game.over', gameOver);
 
 		function levelComplete() {
+			var msg = '<p>Level ' + game.settings.level + '</p>' +
+						    '<p><strong>' + game.settings.pixels + ' points left</strong></p>';
+			if (game.settings.level === 2) {
+				msg += '<p><small>Next level: DROPZONE!!</small></p>';
+			}
 			var timeoutDuration = 1000;
 			if (game.settings.target !== TARGET.none) timeoutDuration = 2000;
 			$timeout(function () {
 				var levelCompletePopup = $ionicPopup.alert({
 					title: 'Level Complete',
-					template: '<p>Level ' + game.settings.level + '</p>' +
-						'<p><strong>' + game.settings.pixels + ' points left</strong></p>',
+					template: msg,
 					okText: 'Next level',
 					okType: 'button-positive'
 				});
