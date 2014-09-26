@@ -23,6 +23,7 @@ angular.module('convergence.directives')
 				shape.style.top = boardCtrl.focalPointY + 'px';
 				shape.style.left = boardCtrl.focalPointX + 'px';
 				shape.style.transform = transform;
+				shape.style.webkitTransform = transform;
 				shape.style.background = scope.shape.color;
 
 				var hintTimer = $timeout(hint, 100);
@@ -48,6 +49,7 @@ angular.module('convergence.directives')
 						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
 						'translate3d(' + adjacentLength * game.settings.hint + 'px, 0px, 0px)';
 					shape.style.transform = transform;
+					shape.style.webkitTransform = transform;
 				}
 
 				// Move the shape inward all the way to the focal point
@@ -58,6 +60,7 @@ angular.module('convergence.directives')
 						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
 						'translate3d(0px, 0px, 0px)';
 					shape.style.transform = transform;
+					shape.style.webkitTransform = transform;
 				}
 			}
 		}
