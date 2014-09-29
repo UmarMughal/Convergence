@@ -21,9 +21,10 @@ angular.module('convergence.directives')
 				function positionTarget() {
 					hideTarget();
 					if (game.settings.target === TARGET.none) return;
-					target.style.top = (boardCtrl.focalPointY - (game.settings.target / 2)) + 'px';
-					target.style.left = (boardCtrl.focalPointX - (game.settings.target / 2)) + 'px';
-					target.style.width = target.style.height = game.settings.target + 'px';
+					var targetSize = game.settings.target * boardCtrl.width;
+					target.style.top = (boardCtrl.focalPointY - (targetSize / 2)) + 'px';
+					target.style.left = (boardCtrl.focalPointX - (targetSize / 2)) + 'px';
+					target.style.width = target.style.height = targetSize + 'px';
 				}
 
 				function hideTarget() {

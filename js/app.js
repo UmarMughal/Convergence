@@ -6,8 +6,8 @@ angular.module('convergence', [
 ])
 
 	.constant('TARGET', {
-		small: 150,
-		large: 250,
+		small: 0.55,
+		large: 0.6,
 		none: 0
 	})
 
@@ -17,8 +17,7 @@ angular.module('convergence', [
 	})
 
 	.constant('HINT', {
-		small: 0.85,
-		medium: 0.75,
+		small: 0.7,
 		large: 0.65
 	})
 

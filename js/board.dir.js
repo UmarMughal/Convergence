@@ -1,6 +1,6 @@
 angular.module('convergence.directives')
 
-	.directive('board', function ($timeout, randomInt, game, TARGET) {
+	.directive('board', function ($timeout, randomise, game, TARGET) {
 		return {
 			restrict: 'E',
 			template: '<div class="board">' +
@@ -55,7 +55,7 @@ angular.module('convergence.directives')
 					var dist = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)); // a2 + b2 = c2
 					game.settings.pixels = game.settings.pixels - Math.floor(dist);
 
-					if (game.settings.target !== TARGET.none && dist > game.settings.target / 2) {
+					if (game.settings.target !== TARGET.none && dist > (game.settings.target * _this.width) / 2) {
 						// If target is in play check the pin is inside it, if not game over
 						$rootScope.$broadcast('game.over');
 
@@ -91,13 +91,13 @@ angular.module('convergence.directives')
 				}
 
 				function randomDegrees(angle) {
-					return randomInt.generate(angle, angle + 20);
+					return randomise.generate(angle, angle + 20);
 				}
 
 				function setFocalPoint() {
 					var focalPointPadding = 50;
-					_this.focalPointX = randomInt.generate(focalPointPadding, _this.width - focalPointPadding);
-					_this.focalPointY = randomInt.generate(focalPointPadding, _this.height - focalPointPadding);
+					_this.focalPointX = randomise.generate(focalPointPadding, _this.width - focalPointPadding);
+					_this.focalPointY = randomise.generate(focalPointPadding, _this.height - focalPointPadding);
 				}
 
 				function addShapes() {
@@ -106,18 +106,18 @@ angular.module('convergence.directives')
 						'#2c97c0', // blue
 						'#b93085', // pink
 						'#f2f2f2', // white
-						'#c5b222', // yellow
 						'#333333', // black
 						'#08ac98', // green
 						'#ffa500'  // orange
 					];
+					colors = randomise.shuffleArray(colors);
 					var angle = 0;
 					var angleDiff = 360 / game.settings.noOfShapes;
 					var shapes = [];
 					for (var i = 0; i < game.settings.noOfShapes; i++) {
 						shapes.push({
 							shape: game.settings.typeOfShapes,
-							color: colors[randomInt.generate(0, 5)],
+							color: colors.pop(),
 							angle: randomDegrees(angle)
 						});
 						angle = angle + angleDiff;

@@ -31,7 +31,7 @@ angular.module('convergence.directives')
 				$rootScope.$on('game.out-of-time', converge);
 
 				scope.$on('$destroy', function () {
-					if (angular.isDefined(hintTimer)) {
+					if (typeof hintTimer !== "undefined") {
 						$timeout.cancel(hintTimer);
 						hintTimer = undefined;
 					}
@@ -43,7 +43,7 @@ angular.module('convergence.directives')
 
 				// Move shape inward slightly to provide a hint to the gamer
 				function hint() {
-					shape.style.transition = 'all 0.3s linear';
+					shape.style.transition = 'all 0.75s linear';
 					var transform =
 						'rotate(' + scope.shape.angle + 'deg) ' +
 						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
