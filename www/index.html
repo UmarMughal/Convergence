@@ -16,7 +16,7 @@
 	<!-- app's js -->
 	<script src="js/services.mod.js"></script>
 	<script src="js/game.svc.js"></script>
-	<script src="js/randomInt.svc.js"></script>
+	<script src="js/randomise.svc.js"></script>
 
 	<script src="js/directives.mod.js"></script>
 	<script src="js/pin.dir.js"></script>
@@ -34,25 +34,27 @@
 
 <ion-side-menus>
 	<ion-side-menu-content ng-controller="GameCtrl">
-		<div class="bar bar-header bar-transparent">
+		<div class="bar bar-header bar-transparent" ng-if="showStartScreen">
 			<div class="buttons">
 				<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
 			</div>
-			<h1 class="title fade points" ng-if="!showStartScreen">{{ game.settings.pixels }}</h1>
+			<h1 class="title app-name">Convergence</h1>
 
-			<h1 class="title fade app-name" ng-if="showStartScreen">Convergence</h1>
-
-			<div class="buttons fade" ng-if="showStartScreen">
+			<div class="buttons">
 				<button ng-click="showInstructions()" class="button button-icon icon ion-ios7-help-outline"></button>
 			</div>
 		</div>
+		<div class="bar bar-header bar-transparent" ng-if="!showStartScreen">
+			<h1 class="title points">{{ game.settings.pixels }}</h1>
+		</div>
+
 		<ion-content scroll="false" class="main-content no-header">
 
-			<div class="playing-backdrop fade" ng-if="!showStartScreen"></div>
+			<div class="playing-backdrop" ng-if="!showStartScreen"></div>
 
 			<board></board>
 
-			<div class="start-screen padding fade" ng-if="showStartScreen">
+			<div class="start-screen padding" ng-if="showStartScreen">
 				<button ng-click="start()" class="button button-block button-large button-transparent padding">Play</button>
 				<div ng-if="highScore" class="highscore text-center padding-top"><i class="icon ion-ribbon-a"></i> Level
 					{{highScore}}
