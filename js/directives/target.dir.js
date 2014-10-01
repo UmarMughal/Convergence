@@ -21,6 +21,7 @@ angular.module('convergence.directives')
 				function positionTarget() {
 					hideTarget();
 					var targetSize = game.settings.target * boardCtrl.width;
+					console.log(target);
 					target.style.top = (boardCtrl.focalPointY - (targetSize / 2)) + 'px';
 					target.style.left = (boardCtrl.focalPointX - (targetSize / 2)) + 'px';
 					target.style.width = target.style.height = targetSize + 'px';
