@@ -7450,12 +7450,6 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 .bar-transparent .title, .bar-transparent .button {
   color: #fff; }
-.bar-transparent .points {
-  letter-spacing: 8px;
-  -webkit-animation-name: diverge;
-          animation-name: diverge;
-  -webkit-animation-duration: 7s;
-          animation-duration: 7s; }
 .bar-transparent .app-name {
   letter-spacing: 0px;
   -webkit-animation-name: converge;
@@ -7509,6 +7503,11 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   bottom: 0px;
   left: 0px;
   overflow: hidden; }
+
+.board.fadeOut {
+  -webkit-transition: opacity 1.5s 1.5s;
+          transition: opacity 1.5s 1.5s;
+  opacity: 0; }
 
 .timer {
   position: absolute;
@@ -7611,6 +7610,58 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 .popup-buttons .button {
   border: 0; }
+
+.level-up {
+  pointer-events: none;
+  position: absolute;
+  width: 85%;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
+  opacity: 0; }
+
+.level-up.reveal {
+  -webkit-animation-name: levelUp;
+          animation-name: levelUp;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s; }
+
+@-webkit-keyframes levelUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale3d(0.2, 0.2, 0.2);
+            transform: translate(-50%, -50%) scale3d(0.2, 0.2, 0.2); }
+
+  35%, 65% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1);
+            transform: translate(-50%, -50%) scale3d(1, 1, 1); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale3d(2, 2, 2);
+            transform: translate(-50%, -50%) scale3d(2, 2, 2); } }
+
+@keyframes levelUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale3d(0.2, 0.2, 0.2);
+            transform: translate(-50%, -50%) scale3d(0.2, 0.2, 0.2); }
+
+  35%, 65% {
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%) scale3d(1, 1, 1);
+            transform: translate(-50%, -50%) scale3d(1, 1, 1); }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale3d(2, 2, 2);
+            transform: translate(-50%, -50%) scale3d(2, 2, 2); } }
 
 @-webkit-keyframes bounceIn {
   0%, 20%, 40%, 60%, 80%, 100% {

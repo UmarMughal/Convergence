@@ -1,6 +1,6 @@
 angular.module('convergence.directives')
 
-	.directive('board', function ($timeout, randomise, game, TARGET) {
+	.directive('board', function ($timeout, randomise, game) {
 		return {
 			restrict: 'E',
 			template: '<div class="board">' +
@@ -35,6 +35,7 @@ angular.module('convergence.directives')
 					pinPosition = {};
 					setFocalPoint();
 					addShapes();
+					board.classList.remove('fadeOut');
 					game.pinEnabled = true;
 				}
 
@@ -53,21 +54,16 @@ angular.module('convergence.directives')
 					var a = Math.abs(pinPosition.x - _this.focalPointX);
 					var b = Math.abs(pinPosition.y - _this.focalPointY);
 					var dist = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)); // a2 + b2 = c2
-					game.settings.pixels = game.settings.pixels - Math.floor(dist);
 
-					if (game.settings.target !== TARGET.none && dist > (game.settings.target * _this.width) / 2) {
-						// If target is in play check the pin is inside it, if not game over
+					if (dist > (game.settings.target * _this.width) / 2) {
+						// If the pin is outside target, game over
 						$rootScope.$broadcast('game.over');
 
-					} else if (game.settings.pixels <= 0) {
-						// If no more pixels, set to 0, game over
-						game.settings.pixels = 0;
-						$rootScope.$broadcast('game.over');
-					}
-					else {
-						// If inside target and pixels remaining let's crack on
+					}	else {
+						// If inside target let's crack on
 						$rootScope.$broadcast('game.level-complete');
 					}
+					board.classList.add('fadeOut');
 				}
 
 				function dropPin(e) {
@@ -80,7 +76,6 @@ angular.module('convergence.directives')
 							pinPosition.x = e.clientX;
 							pinPosition.y = e.clientY;
 						}
-						game.pinEnabled = false;
 						$rootScope.$broadcast('game.drop-pin', pinPosition);
 					}
 				}

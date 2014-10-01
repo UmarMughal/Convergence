@@ -1,24 +1,6 @@
-angular.module('convergence.controllers', [])
+angular.module('convergence.controllers')
 
-	.controller('MenuCtrl', function ($scope, $timeout) {
-
-		// The leaderboard
-		$scope.leaders = [];
-
-		$scope.loadLeaders = function loadLeaders() {
-			$timeout(function () {
-				for (var i = 0; i < 1000; i++) {
-					$scope.leaders.push({
-						name: 'User' + i,
-						score: i * 10
-					});
-				}
-				$scope.$broadcast('scroll.refreshComplete');
-			}, 2000);
-		};
-	})
-
-	.controller('GameCtrl', function ($rootScope, $scope, $timeout, $ionicModal, $ionicPopup, game, TARGET) {
+	.controller('GameCtrl', function ($rootScope, $scope, $timeout, $ionicModal, $ionicPopup, game) {
 
 		$scope.showStartScreen = true;
 
@@ -30,40 +12,36 @@ angular.module('convergence.controllers', [])
 		$scope.start = function start() {
 			$scope.showStartScreen = false;
 			game.setLevel(1);
-			$rootScope.$broadcast('game.play');
+			play();
 		};
 
 		$rootScope.$on('game.level-complete', levelComplete);
 
 		$rootScope.$on('game.over', gameOver);
 
-		function levelComplete() {
-			var msg = '<p>Level ' + game.settings.level + '</p>' +
-						    '<p><strong>' + game.settings.pixels + ' points left</strong></p>';
-			if (game.settings.level === 2) {
-				msg += '<p><small>Next level: DROPZONE!!</small></p>';
-			}
-			var timeoutDuration = 1000;
-			if (game.settings.target !== TARGET.none) timeoutDuration = 2000;
+		function play() {
+			$scope.showLevelIntro = true;
+			// Timeout to allow for "NEXT LEVEL!" animation
 			$timeout(function () {
-				var levelCompletePopup = $ionicPopup.alert({
-					title: 'Level Complete',
-					template: msg,
-					okText: 'Next level',
-					okType: 'button-positive'
-				});
-				levelCompletePopup.then(function (res) {
-					game.nextLevel();
-					$rootScope.$broadcast('game.play');
-				});
-			}, timeoutDuration);
+				$scope.showLevelIntro = false;
+				$rootScope.$broadcast('game.play');
+			}, 1500);
+		}
+
+		function levelComplete() {
+			// Timeout to allow for target animation
+			$timeout(function () {
+				game.nextLevel();
+				play();
+			}, 1500);
 		}
 
 		function gameOver() {
 			var level = game.settings.level - 1;
-			var subTitle = '';
 			var msg = '<p><strong>Level ' + level + '</strong></p>';
+			var subTitle = '';
 			var btnText = 'Continue';
+
 			// On game over save the high score and update the UI
 			if (level > 1 && (!localStorage.highScore || localStorage.highScore < level)) {
 				$scope.highScore = localStorage.highScore = level;
@@ -72,12 +50,10 @@ angular.module('convergence.controllers', [])
 
 			// TIPS
 			if (level === 0) {
-				msg = '<p>You didn\'t complete the level!</p><p><small><strong>Tip:</strong> Tap where you think the shapes are going to overlap.</small></p>';
+				msg = '<p><strong>That was pretty bad!</strong> Try again, this time guess where the shapes will overlap <em>before</em> the timer ticks down</p>'
 				btnText = 'Try again';
 			}
 
-			var timeoutDuration = 1000;
-			if (game.settings.target !== TARGET.none) timeoutDuration = 2000;
 			$timeout(function () {
 				var gameOverPopup = $ionicPopup.alert({
 					title: 'Game Over',
@@ -90,7 +66,7 @@ angular.module('convergence.controllers', [])
 					$scope.showStartScreen = true;
 					$rootScope.$broadcast('game.reset');
 				});
-			}, timeoutDuration);
+			}, 1500);
 		}
 
 		// The Instructions
