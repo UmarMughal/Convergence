@@ -12,6 +12,15 @@
 	font-style: normal;
 }
 
+body {
+	background: $dark;
+}
+
+.view {
+	max-width: 700px;
+	margin: auto;
+}
+
 // Buttons 
 // -------------------------------
 
