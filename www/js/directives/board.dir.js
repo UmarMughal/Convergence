@@ -17,8 +17,8 @@ angular.module('convergence.directives')
 				board.addEventListener("click", dropPin, false);
 
 				var _this = this;
-				_this.width = window.innerWidth;
-				_this.height = window.innerHeight;
+				_this.width = board.clientWidth;
+				_this.height = board.clientHeight;
 
 				var pinPosition = {};
 
