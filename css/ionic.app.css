@@ -7421,6 +7421,13 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   font-weight: normal;
   font-style: normal; }
 
+body {
+  background: #555; }
+
+.view {
+  max-width: 700px;
+  margin: auto; }
+
 .button {
   text-transform: uppercase;
   letter-spacing: 5px; }
