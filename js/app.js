@@ -5,12 +5,6 @@ angular.module('convergence', [
 	'convergence.controllers'
 ])
 
-	.constant('TARGET', {
-		small: 0.55,
-		large: 0.6,
-		none: 0
-	})
-
 	.constant('SHAPE', {
 		square: 'square',
 		circle: 'circle'

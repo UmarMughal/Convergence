@@ -9,8 +9,11 @@ angular.module('convergence.directives')
 			link: function (scope) {
 				var ticker;
 
+				$rootScope.$on('game.play', start);
+				$rootScope.$on('$destroy', stop);
+
 				function start() {
-					if (angular.isDefined(ticker)) stop();
+					stop();
 
 					scope.dots = new Array(6);
 					ticker = $interval(function () {
@@ -25,20 +28,12 @@ angular.module('convergence.directives')
 				}
 
 				function stop() {
-					if (angular.isDefined(ticker)) {
+					if (typeof ticker !== 'undefined') {
 						$interval.cancel(ticker);
 						ticker = undefined;
 						scope.dots = [];
 					}
 				}
-
-				$rootScope.$on('game.play', function () {
-					start();
-				});
-
-				$rootScope.$on('$destroy', function () {
-					stop();
-				});
 			}
 		}
 	});
