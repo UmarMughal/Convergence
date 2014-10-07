@@ -63,7 +63,8 @@
 
 	"predef": [
 		"angular",
-		"Modernizr"
+		"Modernizr",
+		"cordova"
 	]
 
 }
