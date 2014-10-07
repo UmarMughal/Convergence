@@ -1,6 +1,8 @@
 angular.module('convergence.directives')
 
 	.directive('target', function ($rootScope, game) {
+		'use strict';
+
 		return {
 			require: '^board',
 			restrict: 'E',
@@ -34,5 +36,5 @@ angular.module('convergence.directives')
 					target.classList.add('reveal');
 				}
 			}
-		}
+		};
 	});

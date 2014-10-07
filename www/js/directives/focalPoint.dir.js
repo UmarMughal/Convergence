@@ -1,6 +1,8 @@
 angular.module('convergence.directives')
 
 	.directive('focalPoint', function ($rootScope) {
+		'use strict';
+
 		return {
 			require: '^board',
 			restrict: 'E',
@@ -33,5 +35,5 @@ angular.module('convergence.directives')
 					focalPoint.classList.add('reveal');
 				}
 			}
-		}
+		};
 	});

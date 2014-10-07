@@ -1,6 +1,8 @@
 angular.module('convergence.directives')
 
 	.directive('board', function ($timeout, randomise, game) {
+		'use strict';
+
 		return {
 			restrict: 'E',
 			template: '<div class="board">' +
@@ -13,8 +15,8 @@ angular.module('convergence.directives')
 			controller: function ($rootScope, $scope, $element) {
 				var board = $element[0];
 				board.classList.add('board');
-				board.addEventListener("touchstart", dropPin, false);
-				board.addEventListener("click", dropPin, false);
+				board.addEventListener('touchstart', dropPin, false);
+				board.addEventListener('click', dropPin, false);
 
 				var _this = this;
 				_this.width = board.clientWidth;
@@ -59,7 +61,7 @@ angular.module('convergence.directives')
 						// If the pin is outside target, game over
 						$rootScope.$broadcast('game.over');
 
-					}	else {
+					} else {
 						// If inside target let's crack on
 						$rootScope.$broadcast('game.level-complete');
 					}
@@ -121,30 +123,31 @@ angular.module('convergence.directives')
 				}
 
 				_this.calculateAdjacent = function calculateAdjacent(angle) {
+					var a, b, angleReset;
 					var quadrant = Math.floor(angle / 90);
 					switch (quadrant) {
 						case 0: // Bottom right corner
-							var a = board.offsetHeight - _this.focalPointY; // Distance between focal point and bottom
-							var b = board.offsetWidth - _this.focalPointX; // Distance between focal point and right
-							var angleReset = angle * 2;
+							a = board.offsetHeight - _this.focalPointY; // Distance between focal point and bottom
+							b = board.offsetWidth - _this.focalPointX; // Distance between focal point and right
+							angleReset = angle * 2;
 							break;
 
 						case 1: // Bottom left corner
-							var a = board.offsetHeight - _this.focalPointY; // Distance between focal point and bottom
-							var b = _this.focalPointX; // Distance between left and focal point
-							var angleReset = 180;
+							a = board.offsetHeight - _this.focalPointY; // Distance between focal point and bottom
+							b = _this.focalPointX; // Distance between left and focal point
+							angleReset = 180;
 							break;
 
 						case 2: // Top left corner
-							var a = _this.focalPointX; // Distance between left and focal point
-							var b = _this.focalPointY; // Distance between top and focal point
-							var angleReset = 270;
+							a = _this.focalPointX; // Distance between left and focal point
+							b = _this.focalPointY; // Distance between top and focal point
+							angleReset = 270;
 							break;
 
 						case 3: // Top right corner
-							var a = _this.focalPointY; // Distance between top and focal point
-							var b = board.offsetWidth - _this.focalPointX; // Distance between focal point and right
-							var angleReset = 360;
+							a = _this.focalPointY; // Distance between top and focal point
+							b = board.offsetWidth - _this.focalPointX; // Distance between focal point and right
+							angleReset = 360;
 							break;
 					}
 
@@ -152,8 +155,7 @@ angular.module('convergence.directives')
 					var hypotenuse = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)); // Diagonal distance between focal point and corner
 					var adjacentLength = Math.cos(angle * (Math.PI / 180)) * hypotenuse;
 					return adjacentLength;
-				}
+				};
 			}
-		}
-	})
-;
+		};
+	});
