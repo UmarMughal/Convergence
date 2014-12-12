@@ -1,6 +1,8 @@
 angular.module('convergence.services')
 
 	.factory('randomise', function () {
+		'use strict';
+
 		return {
 			generate: function generate(min, max) {
 				return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -23,5 +25,5 @@ angular.module('convergence.services')
 
 				return array;
 			}
-		}
+		};
 	});

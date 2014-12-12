@@ -1,6 +1,7 @@
 angular.module('convergence.controllers')
 
 	.controller('MenuCtrl', function ($scope, $timeout) {
+		'use strict';
 
 		// The leaderboard
 		$scope.leaders = [];

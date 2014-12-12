@@ -1,8 +1,9 @@
 ﻿angular.module('convergence.services')
 
 	.factory('game', function (SHAPE, HINT) {
+		'use strict';
 
-		function init() {
+		function Settings() {
 			return {
 				level: 1,
 				noOfShapes: 6,
@@ -15,7 +16,7 @@
 
 		var game = {
 			pinEnabled: false,
-			settings: new init(),
+			settings: new Settings(),
 			setLevel: function setLevel(level) {
 				if (level === 1)
 					buildLevel(level, 6, HINT.large);
@@ -34,13 +35,13 @@
 				game.setLevel(game.settings.level + 1);
 			},
 			reset: function () {
-				game.settings = new init();
+				game.settings = new Settings();
 			}
-		}
+		};
 
 		function buildLevel(level, noOfShapes, hint) {
-			if (level == 1) {
-				game.settings = new init();
+			if (level === 1) {
+				game.settings = new Settings();
 				return;
 			}
 			game.settings.level = level;

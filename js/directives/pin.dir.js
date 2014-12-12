@@ -1,9 +1,11 @@
 angular.module('convergence.directives')
 
-	.directive('pin', function ($rootScope, game) {
+	.directive('pin', function ($rootScope) {
+		'use strict';
+
 		return {
 			restrict: 'E',
-			template: '<div class="pin"></div>',
+			template: '<div class="pin circle"></div>',
 			link: function (scope, elem) {
 				var pin = elem.find('div')[0];
 
@@ -27,5 +29,5 @@ angular.module('convergence.directives')
 					pin.classList.remove('dropped');
 				}
 			}
-		}
+		};
 	});

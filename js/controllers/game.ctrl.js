@@ -1,6 +1,7 @@
 angular.module('convergence.controllers')
 
 	.controller('GameCtrl', function ($rootScope, $scope, $timeout, $ionicModal, $ionicPopup, game) {
+		'use strict';
 
 		$scope.showStartScreen = true;
 
@@ -50,7 +51,7 @@ angular.module('convergence.controllers')
 
 			// TIPS
 			if (level === 0) {
-				msg = '<p><strong>That was pretty bad!</strong> Try again, this time guess where the shapes will overlap <em>before</em> the timer ticks down</p>'
+				msg = '<p><strong>That was pretty bad!</strong> Try again, this time guess where the shapes will overlap <em>before</em> the timer ticks down</p>';
 				btnText = 'Try again';
 			}
 
@@ -62,7 +63,7 @@ angular.module('convergence.controllers')
 					okText: btnText,
 					okType: 'button-positive'
 				});
-				gameOverPopup.then(function (res) {
+				gameOverPopup.then(function () {
 					$scope.showStartScreen = true;
 					$rootScope.$broadcast('game.reset');
 				});

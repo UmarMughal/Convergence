@@ -1,11 +1,13 @@
 angular.module('convergence.directives')
 
 	.directive('focalPoint', function ($rootScope) {
+		'use strict';
+
 		return {
 			require: '^board',
 			restrict: 'E',
 			scope: {},
-			template: '<div class="focal-point"></div>',
+			template: '<div class="focal-point circle"></div>',
 			link: function (scope, elem, attrs, boardCtrl) {
 
 				var focalPoint = elem.find('div')[0];
@@ -33,5 +35,5 @@ angular.module('convergence.directives')
 					focalPoint.classList.add('reveal');
 				}
 			}
-		}
+		};
 	});

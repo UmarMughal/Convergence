@@ -1,6 +1,8 @@
 angular.module('convergence.directives')
 
 	.directive('timer', function ($rootScope, $interval, game) {
+		'use strict';
+
 		return {
 			restrict: 'E',
 			template: '<div class="timer text-center rounded fade" ng-if="dots.length > 0">' +
@@ -18,7 +20,7 @@ angular.module('convergence.directives')
 					scope.dots = new Array(6);
 					ticker = $interval(function () {
 						scope.dots.pop();
-						if (scope.dots.length == 0) outOfTime();
+						if (scope.dots.length === 0) outOfTime();
 					}, (game.settings.timeLimit / 6) * 1000);
 				}
 
@@ -35,5 +37,5 @@ angular.module('convergence.directives')
 					}
 				}
 			}
-		}
+		};
 	});

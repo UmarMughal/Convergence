@@ -1,6 +1,8 @@
 angular.module('convergence.directives')
 
 	.directive('shape', function ($rootScope, $timeout, game) {
+		'use strict';
+
 		return {
 			require: '^board',
 			restrict: 'E',
@@ -31,7 +33,7 @@ angular.module('convergence.directives')
 				$rootScope.$on('game.out-of-time', converge);
 
 				scope.$on('$destroy', function () {
-					if (typeof hintTimer !== "undefined") {
+					if (typeof hintTimer !== 'undefined') {
 						$timeout.cancel(hintTimer);
 						hintTimer = undefined;
 					}
@@ -63,5 +65,5 @@ angular.module('convergence.directives')
 					shape.style.webkitTransform = transform;
 				}
 			}
-		}
+		};
 	});

@@ -1,11 +1,13 @@
 angular.module('convergence.directives')
 
 	.directive('target', function ($rootScope, game) {
+		'use strict';
+
 		return {
 			require: '^board',
 			restrict: 'E',
 			scope: {},
-			template: '<div class="target"></div>',
+			template: '<div class="target circle"></div>',
 			link: function (scope, elem, attrs, boardCtrl) {
 
 				var target = elem.find('div')[0];
@@ -21,7 +23,6 @@ angular.module('convergence.directives')
 				function positionTarget() {
 					hideTarget();
 					var targetSize = game.settings.target * boardCtrl.width;
-					console.log(target);
 					target.style.top = (boardCtrl.focalPointY - (targetSize / 2)) + 'px';
 					target.style.left = (boardCtrl.focalPointX - (targetSize / 2)) + 'px';
 					target.style.width = target.style.height = targetSize + 'px';
@@ -35,5 +36,5 @@ angular.module('convergence.directives')
 					target.classList.add('reveal');
 				}
 			}
-		}
+		};
 	});
