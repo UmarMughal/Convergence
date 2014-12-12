@@ -7,7 +7,7 @@ angular.module('convergence.directives')
 			require: '^board',
 			restrict: 'E',
 			scope: {},
-			template: '<div class="target"></div>',
+			template: '<div class="target circle"></div>',
 			link: function (scope, elem, attrs, boardCtrl) {
 
 				var target = elem.find('div')[0];

@@ -1,18 +1,4 @@
-﻿// Fonts
-// -------------------------------
-
-@font-face {
-	font-family: $body-font-family;
-	src: url("#{$custom-font-path}/convergence.eot");
-	src: url("#{$custom-font-path}/convergence.eot#iefix") format("embedded-opentype"),
-	url("#{$custom-font-path}/convergence.ttf") format("truetype"),
-	url("#{$custom-font-path}/convergence.woff2") format("woff2"),
-	url("#{$custom-font-path}/convergence.svg#convergence") format("svg");
-	font-weight: normal;
-	font-style: normal;
-}
-
-// Buttons 
+﻿// Buttons 
 // -------------------------------
 
 .button {
@@ -31,20 +17,6 @@
 	}
 }
 
-// Menu
-// -------------------------------
-
-.menu {
-	background-color: darken($dark, 15%);
-}
-
-.menu .item {
-	background-color: darken($dark, 15%);
-	border-color: transparent;
-	left: 0;
-	right: 0;
-}
-
 // Overlapping heading
 // -------------------------------
 
@@ -53,12 +25,15 @@
 	background-color: transparent;
 	border: 0;
 	box-shadow: none;
+	height: 140px;
 }
 
 .bar-transparent {
-	.title,
-	.button {
+	.title{
 		color: $light;
+		font-size: 20px;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
 	.app-name {
@@ -79,11 +54,14 @@
 // -------------------------------
 
 .main-content {
-	background: url('../img/bg.jpeg') no-repeat center fixed;
-	background-size: cover;
 	background-color: $dark;
 	color: $dark;
 	box-shadow: 0 50px 100px -25px #000 inset;
+}
+
+.main-content.home {
+	background: url('../img/bg.jpg') no-repeat center fixed;
+	background-size: cover;
 }
 
 // Playing backdrop
@@ -106,26 +84,19 @@
 	position: absolute;
 	width: 85%;
 	left: 50%;
-	top: 75%;
+	top: 85%;
 	transform: translate(-50%, -50%);
 }
 
 .highscore {
 	color: #fff;
-	font-size: 1.2em;
+	font-size: 1.4em;
 	letter-spacing: 5px;
 
 	.icon {
 		font-size: 1.5em;
 		vertical-align: middle;
 	}
-}
-
-// Help slides
-// -------------------------------
-
-.slider {
-	height: 100%;
 }
 
 // Board
@@ -192,8 +163,7 @@
 	width: 16px;
 	height: 16px;
 	background-color: $hotpink;
-	border-radius: 100%;
-	border: 3px solid #fff;
+	border: 2px solid #fff;
 }
 
 .focal-point.reveal {
@@ -211,8 +181,7 @@
 	width: 16px;
 	height: 16px;
 	background-color: $positive;
-	border-radius: 100%;
-	border: 3px solid #fff;
+	border: 2px solid #fff;
 }
 
 .pin.dropped {
@@ -228,11 +197,9 @@
 .target {
 	display: none;
 	position: absolute;
-	background: $balanced;
-	background-image: repeating-linear-gradient(-45deg, rgba($balanced, 0.6), rgba($balanced, 0.6) 25px, rgba(darken($balanced, 20%), 0.9) 25px, rgba(darken($balanced, 20%), 0.9) 50px);
-	border-radius: 100%;
-	border: 3px solid darken($balanced, 25%);
-	opacity: 0.6;
+	background: rgba(24, 181, 64, 0.5);
+	border: 1px solid #5a9f35;
+	box-shadow: 0 0 40px 40px #59d879 inset;
 }
 
 .target.reveal {
@@ -244,30 +211,33 @@
 // Popups
 // -------------------------------
 
-.popup {
-	border: 0;
-	color: $light;
-	text-align: center;
-	font-size: 1.2em;
-}
-
-.popup-head {
-	border: 0;
-	font-size: 1em;
-
-	h3 {
+.popup-container {
+	.popup {
+		border: 0;
 		color: $light;
-		text-transform: uppercase;
-		letter-spacing: 5px;
+		background-color: #000;
+		text-align: center;
+		font-size: 1.2em;
 	}
-	h5 {
-		color: #74f6dc;
-		text-transform: uppercase;
-	}
-}
 
-.popup-buttons .button {
-	border: 0;
+	.popup-head {
+		border: 0;
+		font-size: 1em;
+
+		h3 {
+			color: $light;
+			text-transform: uppercase;
+			letter-spacing: 5px;
+		}
+		h5 {
+			color: #74f6dc;
+			text-transform: uppercase;
+		}
+	}
+
+	.popup-buttons .button {
+		border: 0;
+	}
 }
 
 .level-up {

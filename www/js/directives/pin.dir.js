@@ -5,7 +5,7 @@ angular.module('convergence.directives')
 
 		return {
 			restrict: 'E',
-			template: '<div class="pin"></div>',
+			template: '<div class="pin circle"></div>',
 			link: function (scope, elem) {
 				var pin = elem.find('div')[0];
 

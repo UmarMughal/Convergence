@@ -100,12 +100,12 @@ angular.module('convergence.directives')
 				function addShapes() {
 					$scope.shapes = [];
 					var colors = [
-						'#2c97c0', // blue
-						'#b93085', // pink
-						'#f2f2f2', // white
-						'#333333', // black
-						'#08ac98', // green
-						'#ffa500'  // orange
+						'#579BCF', // dark blue
+						'#A1D8F6', // light blue
+						'#E75095', // pink
+						'#5AAA36', // green
+						'#AFC424', // pink
+						'#9575CD' // purple
 					];
 					colors = randomise.shuffleArray(colors);
 					var angle = 0;

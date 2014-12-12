@@ -7,7 +7,7 @@ angular.module('convergence.directives')
 			require: '^board',
 			restrict: 'E',
 			scope: {},
-			template: '<div class="focal-point"></div>',
+			template: '<div class="focal-point circle"></div>',
 			link: function (scope, elem, attrs, boardCtrl) {
 
 				var focalPoint = elem.find('div')[0];
