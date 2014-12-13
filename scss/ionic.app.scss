@@ -1,0 +1,25 @@
+$light:                     #ffffff !default;
+$stable:                    #f8f8f8 !default;
+$positive:                  #13abd1 !default;
+$calm:                      #43cee6 !default;
+$balanced:                  #66cc33 !default;
+$energized:                 #f0b840 !default;
+$assertive:                 #ef4e3a !default;
+$royal:                     #8a6de9 !default;
+$dark:                      #555555 !default;
+$cream:                     #f8f6e7 !default;
+$hotpink:                   #ff69b4 !default;
+
+$font-family-system:        "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-sans-serif:    "Montserrat", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-serif:         "Roboto Slab", Georgia, "Times New Roman", Times, serif !default;
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+// Include all of the app
+@import "scss/_fonts";
+@import "scss/_style";
