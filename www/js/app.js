@@ -16,12 +16,12 @@ angular.module('convergence', [
 		large: 0.65
 	})
 
-.run(function ($timeout, $ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar, $cordovaKeyboard) {
+.run(function ($ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar, $cordovaKeyboard) {
 	'use strict';
 
 	$ionicPlatform.ready(function () {
 		$cordovaSplashscreen.hide();
-		$cordovaKeyboard.hideAccessoryBar(true);
 		$cordovaStatusbar.style(1);
+		$cordovaKeyboard.hideAccessoryBar(true);
 	});
 });
