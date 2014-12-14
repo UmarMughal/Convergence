@@ -1,7 +1,7 @@
 {
-  "name": "convergence",
+  "name": "Convergence",
   "version": "1.0.0",
-  "description": "convergence: An Ionic project",
+  "description": "Fun to play, difficult to master",
   "devDependencies": {
     "bower": "^1.3.3",
     "gulp": "^3.5.6",
