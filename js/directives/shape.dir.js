@@ -20,8 +20,7 @@ angular.module('convergence.directives')
 				// Move the shape off the screen
 				var transform =
 					'rotate(' + scope.shape.angle + 'deg) ' +
-					'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
-					'translate3d(' + adjacentLength + 'px, 0px, 0px)';
+					'translate3d(' + adjacentLength + 'px, -' + shape.offsetWidth / 2 + 'px, 0px)';
 				shape.style.top = boardCtrl.focalPointY + 'px';
 				shape.style.left = boardCtrl.focalPointX + 'px';
 				shape.style.transform = transform;
@@ -48,8 +47,7 @@ angular.module('convergence.directives')
 					shape.style.transition = 'all 0.75s linear';
 					var transform =
 						'rotate(' + scope.shape.angle + 'deg) ' +
-						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
-						'translate3d(' + adjacentLength * game.settings.hint + 'px, 0px, 0px)';
+						'translate3d(' + adjacentLength * game.settings.hint + 'px, -' + shape.offsetWidth / 2 + 'px, 0px)';
 					shape.style.transform = transform;
 					shape.style.webkitTransform = transform;
 				}
@@ -59,8 +57,7 @@ angular.module('convergence.directives')
 					shape.style.transition = 'all 0.75s linear';
 					var transform =
 						'rotate(' + scope.shape.angle + 'deg) ' +
-						'translate3d(0, -' + shape.offsetWidth / 2 + 'px, 0) ' +
-						'translate3d(0px, 0px, 0px)';
+						'translate3d(0px, -' + shape.offsetWidth / 2 + 'px, 0px)';
 					shape.style.transform = transform;
 					shape.style.webkitTransform = transform;
 				}
