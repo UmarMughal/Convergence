@@ -75,7 +75,7 @@ angular.module('convergence')
 
 			// TIPS
 			if (level === 0) {
-				msg = '<p><strong>That was pretty bad!</strong> Try again, this time guess where the shapes will overlap <em>before</em> the timer ticks down</p>';
+				msg = '<p><strong>Ooops!</strong> Try again, this time guess where the shapes will overlap before the timer ticks down</p>';
 				btnText = 'Try again';
 			}
 
