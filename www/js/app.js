@@ -14,10 +14,10 @@ angular.module('convergence', [
 	})
 
 	.run(function ($ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar) {
-	'use strict';
+		'use strict';
 
-	$ionicPlatform.ready(function () {
-		$cordovaSplashscreen.hide();
-		$cordovaStatusbar.style(1);
+		$ionicPlatform.ready(function () {
+			$cordovaSplashscreen.hide();
+			$cordovaStatusbar.style(1);
+		});
 	});
-});

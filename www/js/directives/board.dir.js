@@ -6,12 +6,12 @@ angular.module('convergence')
 		return {
 			restrict: 'E',
 			template: '<div class="board">' +
-				'<shape ng-repeat="shape in shapes" shape="shape"></shape>' +
-				'<timer></timer>' +
-				'<target></target>' +
-				'<focal-point></focal-point>' +
-				'<pin></pin>' +
-				'</div>',
+			'<shape ng-repeat="shape in shapes" shape="shape"></shape>' +
+			'<timer></timer>' +
+			'<target></target>' +
+			'<focal-point></focal-point>' +
+			'<pin></pin>' +
+			'</div>',
 			controller: function ($rootScope, $scope, $element) {
 				var board = $element[0];
 				board.classList.add('board');

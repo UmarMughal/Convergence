@@ -6,8 +6,8 @@ angular.module('convergence')
 		return {
 			restrict: 'E',
 			template: '<div class="timer text-center rounded fade" ng-if="dots.length > 0">' +
-				'<span class="dot" ng-repeat="dot in dots track by $index">&bull;<span>' +
-				'</div>',
+			'<span class="dot" ng-repeat="dot in dots track by $index">&bull;<span>' +
+			'</div>',
 			link: function (scope) {
 				var ticker;
 
