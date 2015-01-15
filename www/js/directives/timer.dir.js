@@ -1,4 +1,4 @@
-angular.module('convergence.directives')
+angular.module('convergence')
 
 	.directive('timer', function ($rootScope, $interval, game) {
 		'use strict';

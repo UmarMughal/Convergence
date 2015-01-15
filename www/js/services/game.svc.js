@@ -1,4 +1,4 @@
-﻿angular.module('convergence.services')
+﻿angular.module('convergence')
 
 	.factory('game', function (SHAPE, HINT) {
 		'use strict';

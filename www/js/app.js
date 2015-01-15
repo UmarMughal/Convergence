@@ -1,9 +1,6 @@
 angular.module('convergence', [
 	'ionic',
-	'ngCordova',
-	'convergence.directives',
-	'convergence.services',
-	'convergence.controllers'
+	'ngCordova'
 ])
 
 	.constant('SHAPE', {
@@ -16,12 +13,11 @@ angular.module('convergence', [
 		large: 0.65
 	})
 
-.run(function ($ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar, $cordovaKeyboard) {
+	.run(function ($ionicPlatform, $cordovaSplashscreen, $cordovaStatusbar) {
 	'use strict';
 
 	$ionicPlatform.ready(function () {
 		$cordovaSplashscreen.hide();
 		$cordovaStatusbar.style(1);
-		$cordovaKeyboard.hideAccessoryBar(true);
 	});
 });

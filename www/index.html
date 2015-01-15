@@ -13,11 +13,11 @@
 	<script src="cordova.js"></script>
 
 	<!-- app's js -->
-	<script src="js/services/services.mod.js"></script>
+	<script src="js/app.js"></script>
+
 	<script src="js/services/game.svc.js"></script>
 	<script src="js/services/randomise.svc.js"></script>
 
-	<script src="js/directives/directives.mod.js"></script>
 	<script src="js/directives/pin.dir.js"></script>
 	<script src="js/directives/timer.dir.js"></script>
 	<script src="js/directives/board.dir.js"></script>
@@ -25,10 +25,7 @@
 	<script src="js/directives/focalPoint.dir.js"></script>
 	<script src="js/directives/shape.dir.js"></script>
 
-	<script src="js/controllers/controllers.mod.js"></script>
-	<script src="js/controllers/menu.ctrl.js"></script>
 	<script src="js/controllers/game.ctrl.js"></script>
-	<script src="js/app.js"></script>
 </head>
 
 <body ng-app="convergence">
@@ -46,9 +43,13 @@
 		</div>
 
 		<div class="start-screen padding" ng-if="showStartScreen">
-			<button ng-click="start()" class="button button-block button-transparent padding">Play</button>
-			<div ng-if="highScore" class="highscore text-center padding-top"><i class="icon ion-ribbon-a"></i> Level
+			<div ng-if="highScore" class="highscore text-center padding-bottom"><i class="icon ion-ribbon-a"></i> Level
 				{{highScore}}
+			</div>
+			<button ng-click="start()" class="button button-block button-transparent padding">Play</button>
+			<div ng-if="highScore" class="social-sharing text-center light padding-top" ng-click="share()">
+				<i class="icon ion-social-twitter"></i>
+				<i class="icon ion-social-facebook"></i>
 			</div>
 		</div>
 	</ion-content>

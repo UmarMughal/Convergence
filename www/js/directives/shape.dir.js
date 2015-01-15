@@ -1,4 +1,4 @@
-angular.module('convergence.directives')
+angular.module('convergence')
 
 	.directive('shape', function ($rootScope, $timeout, game) {
 		'use strict';

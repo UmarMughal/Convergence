@@ -1,6 +1,6 @@
-angular.module('convergence.controllers')
+angular.module('convergence')
 
-	.controller('GameCtrl', function ($rootScope, $scope, $timeout, $ionicModal, $ionicPopup, game) {
+	.controller('GameCtrl', function ($rootScope, $scope, $timeout, $cordovaSocialSharing, $ionicModal, $ionicPopup, game) {
 		'use strict';
 
 		$scope.showStartScreen = true;
@@ -9,11 +9,35 @@ angular.module('convergence.controllers')
 
 		$scope.highScore = localStorage.highScore;
 
+		$scope.share = function () {
+			$cordovaSocialSharing
+				.share(
+				'Can you beat my high score of Level' + $scope.highScore + '?! #Convergence',
+				'Convergence - Fun to play, difficult to master',
+				null,
+				'https://itunes.apple.com/us/app/convergence-fun-to-play-difficult/id951366074');
+		};
+
 		// The Game
 		$scope.start = function start() {
-			$scope.showStartScreen = false;
-			game.setLevel(1);
-			play();
+			if (!localStorage.seenInstructions) {
+				var instructionsPopup = $ionicPopup.alert({
+					title: 'How to play',
+					template: 'Tap the screen where you think the shapes will overlap',
+					okText: 'Ok got it!',
+					okType: 'button-positive'
+				});
+				instructionsPopup.then(function () {
+					$scope.showStartScreen = false;
+					game.setLevel(1);
+					play();
+				});
+			} else {
+				localStorage.seenInstructions = true;
+				$scope.showStartScreen = false;
+				game.setLevel(1);
+				play();
+			}
 		};
 
 		$rootScope.$on('game.level-complete', levelComplete);
@@ -69,20 +93,4 @@ angular.module('convergence.controllers')
 				});
 			}, 1500);
 		}
-
-		// The Instructions
-		$ionicModal.fromTemplateUrl('instructions.html', {
-			scope: $scope,
-			animation: 'slide-in-up'
-		}).then(function (modal) {
-			$scope.instructionsModal = modal;
-		});
-
-		$scope.showInstructions = function showInstructions() {
-			$scope.instructionsModal.show();
-		};
-
-		$scope.hideInstructions = function hideInstructions() {
-			$scope.instructionsModal.hide();
-		};
 	});

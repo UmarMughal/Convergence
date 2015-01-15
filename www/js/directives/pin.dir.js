@@ -1,4 +1,4 @@
-angular.module('convergence.directives')
+angular.module('convergence')
 
 	.directive('pin', function ($rootScope) {
 		'use strict';

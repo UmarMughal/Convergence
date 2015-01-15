@@ -1,4 +1,4 @@
-angular.module('convergence.services')
+angular.module('convergence')
 
 	.factory('randomise', function () {
 		'use strict';

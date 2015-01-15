@@ -59,7 +59,7 @@
 }
 
 .main-content.home {
-	background: url('../img/bg.jpg') no-repeat center fixed;
+  background: url('../img/bg.jpg') no-repeat right fixed;
 	background-size: cover;
 }
 
@@ -83,7 +83,7 @@
 	position: absolute;
 	width: 85%;
 	left: 50%;
-	top: 85%;
+  top: 75%;
 	transform: translate(-50%, -50%);
 }
 
@@ -96,6 +96,11 @@
 		font-size: 1.5em;
 		vertical-align: middle;
 	}
+}
+
+.social-sharing {
+  font-size: 30px;
+  letter-spacing: 15px;
 }
 
 // Board

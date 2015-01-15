@@ -1,4 +1,4 @@
-angular.module('convergence.directives')
+angular.module('convergence')
 
 	.directive('board', function ($timeout, randomise, game) {
 		'use strict';
