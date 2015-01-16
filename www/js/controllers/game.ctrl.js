@@ -10,12 +10,16 @@ angular.module('convergence')
 		$scope.highScore = localStorage.highScore;
 
 		$scope.share = function () {
+			var appStoreLink = 'https://itunes.apple.com/us/app/convergence-fun-to-play-difficult/id951366074';
+			if (ionic.Platform.isAndroid()) {
+				appStoreLink = 'https://play.google.com/store/apps/details?id=com.grumpywizards.convergence';
+			}
 			$cordovaSocialSharing
 				.share(
 				'Can you beat my high score of Level' + $scope.highScore + '?! #Convergence',
 				'Convergence - Fun to play, difficult to master',
 				null,
-				'https://itunes.apple.com/us/app/convergence-fun-to-play-difficult/id951366074');
+				appStoreLink);
 		};
 
 		// The Game
@@ -28,12 +32,12 @@ angular.module('convergence')
 					okType: 'button-positive'
 				});
 				instructionsPopup.then(function () {
+					localStorage.seenInstructions = true;
 					$scope.showStartScreen = false;
 					game.setLevel(1);
 					play();
 				});
 			} else {
-				localStorage.seenInstructions = true;
 				$scope.showStartScreen = false;
 				game.setLevel(1);
 				play();

@@ -5084,8 +5084,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     border-radius: 28px;
     background: #fff;
     content: ' ';
-    transition: background-color 20ms ease-in-out;
-  }
+    transition: background-color 20ms ease-in-out; }
 
 .checkbox input:checked:before, input:checked + .checkbox-icon:before {
   border-width: 2px; }
@@ -6848,20 +6847,17 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .col-top {
   -ms-flex-item-align: start;
   -webkit-align-self: flex-start;
-  align-self: flex-start;
-}
+          align-self: flex-start; }
 
 .col-bottom {
   -ms-flex-item-align: end;
   -webkit-align-self: flex-end;
-  align-self: flex-end;
-}
+          align-self: flex-end; }
 
 .col-center {
   -ms-flex-item-align: center;
   -webkit-align-self: center;
-  align-self: center;
-}
+          align-self: center; }
 
 /* Column Offsets */
 .col-offset-10 {
@@ -7421,8 +7417,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 .social-sharing {
   font-size: 30px;
-  letter-spacing: 15px;
-}
+  letter-spacing: 15px; }
 
 .board {
   position: absolute;
@@ -7584,8 +7579,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 @-webkit-keyframes bounceIn {
   0%, 20%, 40%, 60%, 80%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
     opacity: 0;
@@ -7616,8 +7610,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 @keyframes bounceIn {
   0%, 20%, 40%, 60%, 80%, 100% {
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
   0% {
     opacity: 0;
